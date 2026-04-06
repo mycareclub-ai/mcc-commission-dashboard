@@ -1,74 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MyCareClub — Commission Dashboard Q1 2026</title>
+<title>Magnolia — Commission Dashboard Q1 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <style>
-:root{--bg:#0f1117;--surface:#1a1d27;--surface2:#242836;--border:#2d3245;--text:#e4e6f0;--muted:#8b8fa3;--accent:#6366f1;--green:#22c55e;--yellow:#eab308;--red:#ef4444;--green-bg:rgba(34,197,94,.12);--yellow-bg:rgba(234,179,8,.12);--red-bg:rgba(239,68,68,.12)}
+:root,[data-theme="light"]{
+  --bg:#f5f3f0;--surface:#ffffff;--surface2:#f0edea;--border:#e0dbd5;
+  --text:#1a1a1a;--muted:#6b6560;--heading:#056356;
+  --teal:#056356;--teal-light:#0a7d6d;--teal-dark:#044a40;
+  --pink:#D198B6;--pink-light:#e0b5cc;--pink-dark:#b87a9c;
+  --green:#0d8050;--yellow:#b8860b;--red:#c0392b;
+  --green-bg:rgba(13,128,80,.08);--yellow-bg:rgba(184,134,11,.08);--red-bg:rgba(192,57,43,.08);
+  --green-text:#0d8050;--yellow-text:#8b6914;--red-text:#c0392b;
+  --kpi-bg:#ffffff;--table-hover:#f9f7f5;--shadow:0 1px 3px rgba(0,0,0,.06);
+  --toggle-bg:#e0dbd5;--toggle-dot:#ffffff;
+}
+[data-theme="dark"]{
+  --bg:#0f1117;--surface:#1a1d27;--surface2:#242836;--border:#2d3245;
+  --text:#e4e6f0;--muted:#8b8fa3;--heading:#6dd8c8;
+  --teal:#6dd8c8;--teal-light:#8ae4d6;--teal-dark:#4cc4b2;
+  --pink:#D198B6;--pink-light:#e0b5cc;--pink-dark:#b87a9c;
+  --green:#22c55e;--yellow:#eab308;--red:#ef4444;
+  --green-bg:rgba(34,197,94,.12);--yellow-bg:rgba(234,179,8,.12);--red-bg:rgba(239,68,68,.12);
+  --green-text:#22c55e;--yellow-text:#eab308;--red-text:#ef4444;
+  --kpi-bg:#1a1d27;--table-hover:#242836;--shadow:0 1px 3px rgba(0,0,0,.3);
+  --toggle-bg:#4cc4b2;--toggle-dot:#0f1117;
+}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
-.container{max-width:1440px;margin:0 auto;padding:24px}
-h1{font-size:1.75rem;font-weight:700;margin-bottom:4px}
-.subtitle{color:var(--muted);font-size:.9rem;margin-bottom:24px}
-.tabs{display:flex;gap:4px;margin-bottom:24px;background:var(--surface);padding:4px;border-radius:10px;width:fit-content}
-.tab{padding:10px 24px;border:none;background:none;color:var(--muted);font-size:.875rem;font-weight:600;border-radius:8px;cursor:pointer;transition:.2s}
-.tab.active{background:var(--accent);color:#fff}
+body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:background .3s,color .3s}
+.container{max-width:1440px;margin:0 auto;padding:24px 32px}
+.top-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
+.brand{display:flex;align-items:center;gap:14px}
+.brand-mark{width:42px;height:42px;background:var(--teal);border-radius:10px;display:flex;align-items:center;justify-content:center}
+.brand-mark svg{width:26px;height:26px}
+.brand-text h1{font-size:1.5rem;font-weight:700;color:var(--heading);letter-spacing:-.02em}
+.brand-text p{font-size:.8rem;color:var(--muted);font-weight:500}
+.theme-toggle{display:flex;align-items:center;gap:8px;cursor:pointer}
+.theme-toggle span{font-size:.75rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.toggle-track{width:44px;height:24px;background:var(--toggle-bg);border-radius:12px;position:relative;transition:.3s}
+.toggle-dot{width:18px;height:18px;background:var(--toggle-dot);border-radius:50%;position:absolute;top:3px;left:3px;transition:.3s;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+[data-theme="dark"] .toggle-dot{left:23px}
+.tabs{display:flex;gap:4px;margin-bottom:24px;background:var(--surface);padding:4px;border-radius:10px;width:fit-content;box-shadow:var(--shadow)}
+.tab{padding:10px 24px;border:none;background:none;color:var(--muted);font-family:inherit;font-size:.85rem;font-weight:600;border-radius:8px;cursor:pointer;transition:.2s}
+.tab.active{background:var(--teal);color:#fff}
 .tab:hover:not(.active){background:var(--surface2);color:var(--text)}
-.kpi-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-bottom:28px}
-.kpi{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px}
-.kpi-label{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
-.kpi-value{font-size:1.5rem;font-weight:700}
-.kpi-delta{font-size:.75rem;margin-top:4px}
-.kpi-delta.up{color:var(--green)}.kpi-delta.down{color:var(--red)}
-.charts-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px}
-.chart-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px}
-.chart-card h3{font-size:.875rem;color:var(--muted);margin-bottom:12px;font-weight:600}
-.chart-wrap{position:relative;height:320px}
-.table-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:28px}
-.table-header{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
-.table-header h3{font-size:.95rem;font-weight:600}
-.search{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:8px 14px;color:var(--text);font-size:.85rem;width:260px}
-.search:focus{outline:none;border-color:var(--accent)}
-table{width:100%;border-collapse:collapse;font-size:.8rem}
-thead th{background:var(--surface2);padding:10px 12px;text-align:center;font-weight:600;color:var(--muted);position:sticky;top:0;font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;cursor:pointer;user-select:none;white-space:nowrap}
-thead th:first-child{text-align:left}
-thead th:hover{color:var(--text)}
-thead th .arrow{font-size:.6rem;margin-left:3px;opacity:.4}
-thead th.sorted .arrow{opacity:1;color:var(--accent)}
-tbody td{padding:9px 12px;text-align:center;border-bottom:1px solid var(--border)}
-tbody td:first-child{text-align:left;font-weight:500}
-tbody tr:hover{background:var(--surface2)}
-tbody tr.total-row{background:var(--surface2);font-weight:700}
-tbody tr.total-row td{border-top:2px solid var(--border)}
-.pill{display:inline-block;padding:2px 10px;border-radius:20px;font-weight:600;font-size:.75rem}
-.pill.green{background:var(--green-bg);color:var(--green)}
-.pill.yellow{background:var(--yellow-bg);color:var(--yellow)}
-.pill.red{background:var(--red-bg);color:var(--red)}
-.table-scroll{max-height:700px;overflow-y:auto}
-.filter-chips{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
-.chip{padding:6px 14px;border:1px solid var(--border);border-radius:20px;font-size:.8rem;cursor:pointer;background:none;color:var(--muted);transition:.2s}
-.chip.active{border-color:var(--accent);color:var(--accent);background:rgba(99,102,241,.1)}
+.kpi-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-bottom:24px}
+.kpi{background:var(--kpi-bg);border:1px solid var(--border);border-radius:12px;padding:18px;box-shadow:var(--shadow);transition:background .3s}
+.kpi-label{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;font-weight:600}
+.kpi-value{font-size:1.4rem;font-weight:700;color:var(--heading)}
+.kpi-delta{font-size:.7rem;margin-top:4px;font-weight:500}
+.kpi-delta.up{color:var(--green-text)}.kpi-delta.down{color:var(--red-text)}
+.table-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:28px;box-shadow:var(--shadow);transition:background .3s}
+.table-header{padding:14px 20px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.table-header h3{font-size:.9rem;font-weight:700;color:var(--heading)}
+.search{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:8px 14px;color:var(--text);font-family:inherit;font-size:.8rem;width:240px;transition:background .3s}
+.search:focus{outline:none;border-color:var(--teal)}
+.filter-chips{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.chip{padding:6px 14px;border:1px solid var(--border);border-radius:20px;font-size:.75rem;font-family:inherit;font-weight:600;cursor:pointer;background:none;color:var(--muted);transition:.2s}
+.chip.active{border-color:var(--teal);color:var(--teal);background:rgba(5,99,86,.08)}
 .chip:hover:not(.active){border-color:var(--muted);color:var(--text)}
+table{width:100%;border-collapse:collapse;font-size:.78rem}
+thead th{background:var(--surface2);padding:10px 10px;text-align:center;font-weight:600;color:var(--muted);position:sticky;top:0;font-size:.68rem;text-transform:uppercase;letter-spacing:.04em;cursor:pointer;user-select:none;white-space:nowrap;transition:background .3s}
+thead th:first-child{text-align:left;padding-left:20px}
+thead th:hover{color:var(--text)}
+thead th .arrow{font-size:.55rem;margin-left:2px;opacity:.4}
+thead th.sorted .arrow{opacity:1;color:var(--teal)}
+tbody td{padding:9px 10px;text-align:center;border-bottom:1px solid var(--border)}
+tbody td:first-child{text-align:left;font-weight:500;padding-left:20px}
+tbody tr:hover{background:var(--table-hover)}
+tbody tr.total-row{font-weight:700}
+tbody tr.total-row td{border-top:2px solid var(--teal);background:var(--surface2)}
+.pill{display:inline-block;padding:2px 10px;border-radius:20px;font-weight:600;font-size:.72rem}
+.pill.green{background:var(--green-bg);color:var(--green-text)}
+.pill.yellow{background:var(--yellow-bg);color:var(--yellow-text)}
+.pill.red{background:var(--red-bg);color:var(--red-text)}
+.table-scroll{max-height:700px;overflow-y:auto}
+.charts-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px}
+.chart-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;box-shadow:var(--shadow);transition:background .3s}
+.chart-card h3{font-size:.85rem;color:var(--muted);margin-bottom:12px;font-weight:600}
+.chart-wrap{position:relative;height:320px}
+.accent-bar{height:3px;background:linear-gradient(90deg,var(--teal),var(--pink));border-radius:2px;margin-bottom:24px}
 @media(max-width:1024px){.kpi-grid{grid-template-columns:repeat(3,1fr)}.charts-row{grid-template-columns:1fr}}
 @media(max-width:640px){.kpi-grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
 <div class="container">
-<h1>MyCareClub Commission Dashboard</h1>
-<p class="subtitle">Q1 2026 — Agent Performance & CPA Analysis</p>
-
+<div class="top-bar">
+  <div class="brand">
+    <div class="brand-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2C9.5 5 5 7 5 12c0 4 3 8 7 10 4-2 7-6 7-10 0-5-4.5-7-7-10z" fill="#D198B6" opacity=".7"/><path d="M12 6c-1.5 2-4 3.5-4 6.5 0 2.5 1.8 5 4 6.5 2.2-1.5 4-4 4-6.5 0-3-2.5-4.5-4-6.5z" fill="white" opacity=".9"/></svg></div>
+    <div class="brand-text">
+      <h1>Magnolia</h1>
+      <p>Commission Dashboard &middot; Q1 2026</p>
+    </div>
+  </div>
+  <div class="theme-toggle" onclick="toggleTheme()">
+    <span id="themeLabel">Light</span>
+    <div class="toggle-track"><div class="toggle-dot"></div></div>
+  </div>
+</div>
+<div class="accent-bar"></div>
 <div class="tabs" id="monthTabs">
   <button class="tab" data-month="jan">January</button>
   <button class="tab" data-month="feb">February</button>
   <button class="tab active" data-month="mar">March</button>
   <button class="tab" data-month="trend">Trend</button>
 </div>
-
 <div id="monthView">
-  <div class="kpi-grid" id="kpis"></div>
+  <div id="kpis"></div>
   <div class="filter-chips" id="tierFilters">
     <button class="chip active" data-tier="all">All Agents</button>
     <button class="chip" data-tier="active">Active Only</button>
@@ -77,25 +119,15 @@ tbody tr.total-row td{border-top:2px solid var(--border)}
     <button class="chip" data-tier="75-79%">75-79%</button>
     <button class="chip" data-tier="70-74%">70-74%</button>
   </div>
-  <div class="charts-row">
-    <div class="chart-card"><h3>CPA Comparison — Top 20 Agents</h3><div class="chart-wrap"><canvas id="cpaChart"></canvas></div></div>
-    <div class="chart-card"><h3>Cost Breakdown — Top 20 Agents</h3><div class="chart-wrap"><canvas id="costChart"></canvas></div></div>
-  </div>
   <div class="table-card">
-    <div class="table-header">
-      <h3 id="tableTitle">Agent Summary</h3>
-      <input class="search" id="searchInput" placeholder="Search agents...">
-    </div>
-    <div class="table-scroll">
-      <table><thead id="thead"></thead><tbody id="tbody"></tbody></table>
-    </div>
+    <div class="table-header"><h3 id="tableTitle">Agent Summary</h3><input class="search" id="searchInput" placeholder="Search agents..."></div>
+    <div class="table-scroll"><table><thead id="thead"></thead><tbody id="tbody"></tbody></table></div>
   </div>
 </div>
-
 <div id="trendView" style="display:none">
   <div class="kpi-grid" id="trendKpis"></div>
   <div class="charts-row">
-    <div class="chart-card"><h3>Monthly Payable Apps</h3><div class="chart-wrap"><canvas id="trendAppsChart"></canvas></div></div>
+    <div class="chart-card"><h3>Monthly Effectuated Apps</h3><div class="chart-wrap"><canvas id="trendAppsChart"></canvas></div></div>
     <div class="chart-card"><h3>Monthly CPA Trends</h3><div class="chart-wrap"><canvas id="trendCpaChart"></canvas></div></div>
   </div>
   <div class="charts-row">
@@ -104,265 +136,158 @@ tbody tr.total-row td{border-top:2px solid var(--border)}
   </div>
 </div>
 </div>
-
 <script>
-const DATA = PLACEHOLDER_DATA;
+const DATA = {"jan":[{"name":"Chris Rosen","effectuated":81,"total_ma":87,"eff_rate":0.9310344827586207,"tier":"85%+","per_policy":100,"payout":8100,"mktg_spend":4568,"salary":2689,"all_in_cost":15357,"mktg_cpa":56,"all_in_cpa":190,"proj_rdr_apps":57,"proj_rdr_cpa":271},{"name":"Justin Miles","effectuated":57,"total_ma":71,"eff_rate":0.8028169014084507,"tier":"80-84%","per_policy":85,"payout":4845,"mktg_spend":5175,"salary":3000,"all_in_cost":13020,"mktg_cpa":91,"all_in_cpa":228,"proj_rdr_apps":40,"proj_rdr_cpa":326},{"name":"Juna Defay Lamour","effectuated":55,"total_ma":59,"eff_rate":0.9322033898305084,"tier":"85%+","per_policy":100,"payout":5500,"mktg_spend":4115,"salary":2659,"all_in_cost":12274,"mktg_cpa":75,"all_in_cpa":223,"proj_rdr_apps":38,"proj_rdr_cpa":319},{"name":"Vanessa Capote","effectuated":48,"total_ma":62,"eff_rate":0.7741935483870968,"tier":"75-79%","per_policy":70,"payout":3360,"mktg_spend":2415,"salary":2422,"all_in_cost":8198,"mktg_cpa":50,"all_in_cpa":171,"proj_rdr_apps":34,"proj_rdr_cpa":244},{"name":"Siannie Abdala","effectuated":43,"total_ma":63,"eff_rate":0.6825396825396826,"tier":"\u226469%","per_policy":40,"payout":1720,"mktg_spend":3515,"salary":3181,"all_in_cost":8416,"mktg_cpa":82,"all_in_cpa":196,"proj_rdr_apps":30,"proj_rdr_cpa":280},{"name":"Logan Kelly","effectuated":40,"total_ma":54,"eff_rate":0.7407407407407407,"tier":"70-74%","per_policy":55,"payout":2200,"mktg_spend":6715,"salary":2760,"all_in_cost":11675,"mktg_cpa":168,"all_in_cpa":292,"proj_rdr_apps":28,"proj_rdr_cpa":417},{"name":"Isaiah Joseph","effectuated":40,"total_ma":49,"eff_rate":0.8163265306122449,"tier":"80-84%","per_policy":85,"payout":3400,"mktg_spend":3810,"salary":2497,"all_in_cost":9707,"mktg_cpa":95,"all_in_cpa":243,"proj_rdr_apps":28,"proj_rdr_cpa":347},{"name":"Brandon Luz-Lopez","effectuated":39,"total_ma":47,"eff_rate":0.8297872340425532,"tier":"80-84%","per_policy":85,"payout":3315,"mktg_spend":5100,"salary":2640,"all_in_cost":11055,"mktg_cpa":131,"all_in_cpa":283,"proj_rdr_apps":27,"proj_rdr_cpa":405},{"name":"Jozani Fernandez","effectuated":37,"total_ma":49,"eff_rate":0.7551020408163265,"tier":"75-79%","per_policy":70,"payout":2590,"mktg_spend":5655,"salary":2956,"all_in_cost":11200,"mktg_cpa":153,"all_in_cpa":303,"proj_rdr_apps":26,"proj_rdr_cpa":432},{"name":"Bryan Vidal","effectuated":36,"total_ma":46,"eff_rate":0.782608695652174,"tier":"75-79%","per_policy":70,"payout":2520,"mktg_spend":2505,"salary":2727,"all_in_cost":7752,"mktg_cpa":70,"all_in_cpa":215,"proj_rdr_apps":25,"proj_rdr_cpa":308},{"name":"Nicolette Bethel","effectuated":33,"total_ma":37,"eff_rate":0.8918918918918919,"tier":"85%+","per_policy":100,"payout":3300,"mktg_spend":4960,"salary":2986,"all_in_cost":11246,"mktg_cpa":150,"all_in_cpa":341,"proj_rdr_apps":23,"proj_rdr_cpa":487},{"name":"Marc Krebs","effectuated":33,"total_ma":36,"eff_rate":0.9166666666666666,"tier":"85%+","per_policy":100,"payout":3300,"mktg_spend":4298,"salary":2857,"all_in_cost":10455,"mktg_cpa":130,"all_in_cpa":317,"proj_rdr_apps":23,"proj_rdr_cpa":453},{"name":"Nathaneal Mclean","effectuated":32,"total_ma":38,"eff_rate":0.8421052631578947,"tier":"80-84%","per_policy":85,"payout":2720,"mktg_spend":1560,"salary":2181,"all_in_cost":6461,"mktg_cpa":49,"all_in_cpa":202,"proj_rdr_apps":22,"proj_rdr_cpa":288},{"name":"Kevin Gallego","effectuated":32,"total_ma":44,"eff_rate":0.7272727272727273,"tier":"70-74%","per_policy":55,"payout":1760,"mktg_spend":4710,"salary":2283,"all_in_cost":8753,"mktg_cpa":147,"all_in_cpa":274,"proj_rdr_apps":22,"proj_rdr_cpa":391},{"name":"Ervin Molina","effectuated":31,"total_ma":46,"eff_rate":0.6739130434782609,"tier":"\u226469%","per_policy":40,"payout":1240,"mktg_spend":4275,"salary":2089,"all_in_cost":7604,"mktg_cpa":138,"all_in_cpa":245,"proj_rdr_apps":22,"proj_rdr_cpa":350},{"name":"Alex Fernandez","effectuated":28,"total_ma":34,"eff_rate":0.8235294117647058,"tier":"80-84%","per_policy":85,"payout":2380,"mktg_spend":3765,"salary":2744,"all_in_cost":8890,"mktg_cpa":134,"all_in_cpa":317,"proj_rdr_apps":20,"proj_rdr_cpa":454},{"name":"Josiah Fernandez","effectuated":28,"total_ma":32,"eff_rate":0.875,"tier":"85%+","per_policy":100,"payout":2800,"mktg_spend":2940,"salary":2400,"all_in_cost":8140,"mktg_cpa":105,"all_in_cpa":291,"proj_rdr_apps":20,"proj_rdr_cpa":415},{"name":"Berkley Prospere","effectuated":23,"total_ma":37,"eff_rate":0.6216216216216216,"tier":"\u226469%","per_policy":40,"payout":920,"mktg_spend":2695,"salary":2596,"all_in_cost":6211,"mktg_cpa":117,"all_in_cpa":270,"proj_rdr_apps":16,"proj_rdr_cpa":386},{"name":"Trey Scott","effectuated":22,"total_ma":28,"eff_rate":0.7857142857142857,"tier":"75-79%","per_policy":70,"payout":1540,"mktg_spend":3555,"salary":2339,"all_in_cost":7434,"mktg_cpa":162,"all_in_cpa":338,"proj_rdr_apps":15,"proj_rdr_cpa":483},{"name":"Roodolph Antoine","effectuated":19,"total_ma":23,"eff_rate":0.8260869565217391,"tier":"80-84%","per_policy":85,"payout":1615,"mktg_spend":1965,"salary":527,"all_in_cost":4107,"mktg_cpa":103,"all_in_cpa":216,"proj_rdr_apps":13,"proj_rdr_cpa":309},{"name":"Jimmy Nguyen","effectuated":17,"total_ma":25,"eff_rate":0.68,"tier":"\u226469%","per_policy":40,"payout":680,"mktg_spend":3785,"salary":2052,"all_in_cost":6517,"mktg_cpa":223,"all_in_cpa":383,"proj_rdr_apps":12,"proj_rdr_cpa":548},{"name":"Chadwick Snyder","effectuated":17,"total_ma":19,"eff_rate":0.8947368421052632,"tier":"85%+","per_policy":100,"payout":1700,"mktg_spend":0,"salary":0,"all_in_cost":1700,"mktg_cpa":null,"all_in_cpa":100,"proj_rdr_apps":12,"proj_rdr_cpa":143},{"name":"Bailey King","effectuated":11,"total_ma":11,"eff_rate":1.0,"tier":"85%+","per_policy":100,"payout":1100,"mktg_spend":1560,"salary":0,"all_in_cost":2660,"mktg_cpa":142,"all_in_cpa":242,"proj_rdr_apps":8,"proj_rdr_cpa":345},{"name":"James Proctor","effectuated":10,"total_ma":12,"eff_rate":0.8333333333333334,"tier":"80-84%","per_policy":85,"payout":850,"mktg_spend":930,"salary":0,"all_in_cost":1780,"mktg_cpa":93,"all_in_cpa":178,"proj_rdr_apps":7,"proj_rdr_cpa":254},{"name":"Anthony Escobar","effectuated":10,"total_ma":11,"eff_rate":0.9090909090909091,"tier":"85%+","per_policy":100,"payout":1000,"mktg_spend":1725,"salary":600,"all_in_cost":3325,"mktg_cpa":172,"all_in_cpa":332,"proj_rdr_apps":7,"proj_rdr_cpa":475},{"name":"Brandon Budwig","effectuated":3,"total_ma":3,"eff_rate":1.0,"tier":"85%+","per_policy":100,"payout":300,"mktg_spend":700,"salary":10350,"all_in_cost":11350,"mktg_cpa":233,"all_in_cpa":3783,"proj_rdr_apps":2,"proj_rdr_cpa":5405},{"name":"Kerith Hollingsworth","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":6280,"salary":0,"all_in_cost":6280,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null},{"name":"Latoya Boyd","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":9040,"salary":0,"all_in_cost":9040,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null},{"name":"Byron Morgan","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":0,"salary":0,"all_in_cost":0,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null},{"name":"James DeChene","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":0,"salary":0,"all_in_cost":0,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null},{"name":"Ryan Schmiedeknecht","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":0,"salary":2421,"all_in_cost":2421,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null},{"name":"Meeah Ventura","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":12810,"salary":750,"all_in_cost":13560,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null},{"name":"Carlos Gonzalez","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":13350,"salary":0,"all_in_cost":13350,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null},{"name":"Nicole Baraibar","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":0,"salary":0,"all_in_cost":0,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null},{"name":"Christine Saint Fleur","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":0,"salary":0,"all_in_cost":0,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null},{"name":"Marvin McManus","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":0,"salary":0,"all_in_cost":0,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null},{"name":"Destiny Ventura","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":13735,"salary":875,"all_in_cost":14610,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null},{"name":"Brenda Ciero","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":0,"salary":0,"all_in_cost":0,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null},{"name":"Christian Delgado","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":11095,"salary":0,"all_in_cost":11095,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null},{"name":"Daniel Martinez","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":16450,"salary":1550,"all_in_cost":18000,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null},{"name":"Leopoldo Romero","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":0,"salary":0,"all_in_cost":0,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null},{"name":"Raheem Carr","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":0,"salary":0,"all_in_cost":0,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null},{"name":"Reginal Jeudy","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":2555,"salary":0,"all_in_cost":2555,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null}],"feb":[{"name":"Justin Miles","effectuated":56,"total_ma":69,"eff_rate":0.8115942028985508,"tier":"80-84%","per_policy":85,"payout":4760,"mktg_spend":4803,"salary":2400,"all_in_cost":11963,"mktg_cpa":86,"all_in_cpa":214,"proj_rdr_apps":39,"proj_rdr_cpa":305},{"name":"Chris Rosen","effectuated":54,"total_ma":61,"eff_rate":0.8852459016393442,"tier":"85%+","per_policy":100,"payout":5400,"mktg_spend":3719,"salary":2400,"all_in_cost":11519,"mktg_cpa":69,"all_in_cpa":213,"proj_rdr_apps":38,"proj_rdr_cpa":305},{"name":"Vanessa Capote","effectuated":45,"total_ma":54,"eff_rate":0.8333333333333334,"tier":"80-84%","per_policy":85,"payout":3825,"mktg_spend":3027,"salary":2228,"all_in_cost":9080,"mktg_cpa":67,"all_in_cpa":202,"proj_rdr_apps":31,"proj_rdr_cpa":288},{"name":"Anthony Escobar","effectuated":43,"total_ma":54,"eff_rate":0.7962962962962963,"tier":"75-79%","per_policy":70,"payout":3010,"mktg_spend":4402,"salary":2400,"all_in_cost":9812,"mktg_cpa":102,"all_in_cpa":228,"proj_rdr_apps":30,"proj_rdr_cpa":326},{"name":"Logan Kelly","effectuated":41,"total_ma":51,"eff_rate":0.803921568627451,"tier":"80-84%","per_policy":85,"payout":3485,"mktg_spend":6463,"salary":2400,"all_in_cost":12348,"mktg_cpa":158,"all_in_cpa":301,"proj_rdr_apps":29,"proj_rdr_cpa":430},{"name":"Alex Fernandez","effectuated":39,"total_ma":52,"eff_rate":0.75,"tier":"75-79%","per_policy":70,"payout":2730,"mktg_spend":4857,"salary":2180,"all_in_cost":9767,"mktg_cpa":125,"all_in_cpa":250,"proj_rdr_apps":27,"proj_rdr_cpa":358},{"name":"Roodolph Antoine","effectuated":37,"total_ma":50,"eff_rate":0.74,"tier":"70-74%","per_policy":55,"payout":2035,"mktg_spend":5493,"salary":2280,"all_in_cost":9808,"mktg_cpa":148,"all_in_cpa":265,"proj_rdr_apps":26,"proj_rdr_cpa":379},{"name":"Bryan Vidal","effectuated":37,"total_ma":43,"eff_rate":0.8604651162790697,"tier":"85%+","per_policy":100,"payout":3700,"mktg_spend":3524,"salary":2400,"all_in_cost":9624,"mktg_cpa":95,"all_in_cpa":260,"proj_rdr_apps":26,"proj_rdr_cpa":372},{"name":"Jimmy Nguyen","effectuated":36,"total_ma":44,"eff_rate":0.8181818181818182,"tier":"80-84%","per_policy":85,"payout":3060,"mktg_spend":4889,"salary":2058,"all_in_cost":10007,"mktg_cpa":136,"all_in_cpa":278,"proj_rdr_apps":25,"proj_rdr_cpa":397},{"name":"Isaiah Joseph","effectuated":35,"total_ma":45,"eff_rate":0.7777777777777778,"tier":"75-79%","per_policy":70,"payout":2450,"mktg_spend":5600,"salary":2026,"all_in_cost":10076,"mktg_cpa":160,"all_in_cpa":288,"proj_rdr_apps":24,"proj_rdr_cpa":411},{"name":"Siannie Abdala","effectuated":33,"total_ma":39,"eff_rate":0.8461538461538461,"tier":"80-84%","per_policy":85,"payout":2805,"mktg_spend":4557,"salary":2929,"all_in_cost":10291,"mktg_cpa":138,"all_in_cpa":312,"proj_rdr_apps":23,"proj_rdr_cpa":446},{"name":"Juna Defay Lamour","effectuated":33,"total_ma":46,"eff_rate":0.717391304347826,"tier":"70-74%","per_policy":55,"payout":1815,"mktg_spend":2736,"salary":2075,"all_in_cost":6626,"mktg_cpa":83,"all_in_cpa":201,"proj_rdr_apps":23,"proj_rdr_cpa":287},{"name":"Ervin Molina","effectuated":33,"total_ma":42,"eff_rate":0.7857142857142857,"tier":"75-79%","per_policy":70,"payout":2310,"mktg_spend":3952,"salary":1929,"all_in_cost":8191,"mktg_cpa":120,"all_in_cpa":248,"proj_rdr_apps":23,"proj_rdr_cpa":355},{"name":"Trey Scott","effectuated":32,"total_ma":42,"eff_rate":0.7619047619047619,"tier":"75-79%","per_policy":70,"payout":2240,"mktg_spend":4587,"salary":2258,"all_in_cost":9084,"mktg_cpa":143,"all_in_cpa":284,"proj_rdr_apps":22,"proj_rdr_cpa":406},{"name":"Josiah Fernandez","effectuated":30,"total_ma":37,"eff_rate":0.8108108108108109,"tier":"80-84%","per_policy":85,"payout":2550,"mktg_spend":4120,"salary":2280,"all_in_cost":8950,"mktg_cpa":137,"all_in_cpa":298,"proj_rdr_apps":21,"proj_rdr_cpa":426},{"name":"Bailey King","effectuated":30,"total_ma":37,"eff_rate":0.8108108108108109,"tier":"80-84%","per_policy":85,"payout":2550,"mktg_spend":4025,"salary":1478,"all_in_cost":8053,"mktg_cpa":134,"all_in_cpa":268,"proj_rdr_apps":21,"proj_rdr_cpa":383},{"name":"Jozani Fernandez","effectuated":28,"total_ma":39,"eff_rate":0.717948717948718,"tier":"70-74%","per_policy":55,"payout":1540,"mktg_spend":5272,"salary":2280,"all_in_cost":9092,"mktg_cpa":188,"all_in_cpa":325,"proj_rdr_apps":20,"proj_rdr_cpa":464},{"name":"Marc Krebs","effectuated":27,"total_ma":32,"eff_rate":0.84375,"tier":"80-84%","per_policy":85,"payout":2295,"mktg_spend":4141,"salary":2385,"all_in_cost":8821,"mktg_cpa":153,"all_in_cpa":327,"proj_rdr_apps":19,"proj_rdr_cpa":467},{"name":"James Proctor","effectuated":26,"total_ma":32,"eff_rate":0.8125,"tier":"80-84%","per_policy":85,"payout":2210,"mktg_spend":2556,"salary":0,"all_in_cost":4766,"mktg_cpa":98,"all_in_cpa":183,"proj_rdr_apps":18,"proj_rdr_cpa":262},{"name":"Berkley Prospere","effectuated":26,"total_ma":37,"eff_rate":0.7027027027027027,"tier":"70-74%","per_policy":55,"payout":1430,"mktg_spend":3155,"salary":2108,"all_in_cost":6692,"mktg_cpa":121,"all_in_cpa":257,"proj_rdr_apps":18,"proj_rdr_cpa":368},{"name":"Nicolette Bethel","effectuated":25,"total_ma":29,"eff_rate":0.8620689655172413,"tier":"85%+","per_policy":100,"payout":2500,"mktg_spend":5181,"salary":2280,"all_in_cost":9961,"mktg_cpa":207,"all_in_cpa":398,"proj_rdr_apps":18,"proj_rdr_cpa":569},{"name":"Kevin Gallego","effectuated":25,"total_ma":37,"eff_rate":0.6756756756756757,"tier":"\u226469%","per_policy":40,"payout":1000,"mktg_spend":4798,"salary":1962,"all_in_cost":7760,"mktg_cpa":192,"all_in_cpa":310,"proj_rdr_apps":18,"proj_rdr_cpa":443},{"name":"Brandon Luz-Lopez","effectuated":21,"total_ma":32,"eff_rate":0.65625,"tier":"\u226469%","per_policy":40,"payout":840,"mktg_spend":4668,"salary":2025,"all_in_cost":7533,"mktg_cpa":222,"all_in_cpa":359,"proj_rdr_apps":15,"proj_rdr_cpa":512},{"name":"Nathaneal Mclean","effectuated":18,"total_ma":23,"eff_rate":0.782608695652174,"tier":"75-79%","per_policy":70,"payout":1260,"mktg_spend":3673,"salary":1803,"all_in_cost":6736,"mktg_cpa":204,"all_in_cpa":374,"proj_rdr_apps":13,"proj_rdr_cpa":535},{"name":"Brandon Budwig","effectuated":17,"total_ma":17,"eff_rate":1.0,"tier":"85%+","per_policy":100,"payout":1700,"mktg_spend":1432,"salary":8000,"all_in_cost":11132,"mktg_cpa":84,"all_in_cpa":655,"proj_rdr_apps":12,"proj_rdr_cpa":935},{"name":"Chadwick Snyder","effectuated":14,"total_ma":17,"eff_rate":0.8235294117647058,"tier":"80-84%","per_policy":85,"payout":1190,"mktg_spend":0,"salary":0,"all_in_cost":1190,"mktg_cpa":null,"all_in_cpa":85,"proj_rdr_apps":10,"proj_rdr_cpa":121},{"name":"Brenda Ciero","effectuated":2,"total_ma":2,"eff_rate":1.0,"tier":"85%+","per_policy":100,"payout":200,"mktg_spend":576,"salary":0,"all_in_cost":776,"mktg_cpa":288,"all_in_cpa":388,"proj_rdr_apps":1,"proj_rdr_cpa":554},{"name":"James DeChene","effectuated":1,"total_ma":1,"eff_rate":1.0,"tier":"85%+","per_policy":100,"payout":100,"mktg_spend":220,"salary":0,"all_in_cost":320,"mktg_cpa":220,"all_in_cpa":320,"proj_rdr_apps":1,"proj_rdr_cpa":457},{"name":"Kerith Hollingsworth","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":9529,"salary":0,"all_in_cost":9529,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null},{"name":"Latoya Boyd","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":16037,"salary":0,"all_in_cost":16037,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null},{"name":"Byron Morgan","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":0,"salary":0,"all_in_cost":0,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null},{"name":"Ryan Schmiedeknecht","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":26,"salary":360,"all_in_cost":386,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null},{"name":"Meeah Ventura","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":9719,"salary":4175,"all_in_cost":13894,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null},{"name":"Carlos Gonzalez","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":13218,"salary":0,"all_in_cost":13218,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null},{"name":"Nicole Baraibar","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":0,"salary":0,"all_in_cost":0,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null},{"name":"Christine Saint Fleur","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":0,"salary":0,"all_in_cost":0,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null},{"name":"Marvin McManus","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":0,"salary":0,"all_in_cost":0,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null},{"name":"Destiny Ventura","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":12669,"salary":4910,"all_in_cost":17579,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null},{"name":"Christian Delgado","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":151,"salary":0,"all_in_cost":151,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null},{"name":"Daniel Martinez","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":14037,"salary":5455,"all_in_cost":19492,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null},{"name":"Leopoldo Romero","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":110,"salary":0,"all_in_cost":110,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null},{"name":"Raheem Carr","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":0,"salary":0,"all_in_cost":0,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null},{"name":"Reginal Jeudy","effectuated":0,"total_ma":0,"eff_rate":0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":4609,"salary":2125,"all_in_cost":6734,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null}],"mar":[{"name":"Chris Rosen","effectuated":74,"total_ma":96,"eff_rate":0.7708333333333334,"tier":"75-79%","per_policy":70,"payout":5180,"mktg_spend":6674,"salary":3000,"all_in_cost":14854,"mktg_cpa":90,"all_in_cpa":201,"proj_rdr_apps":52,"proj_rdr_cpa":287},{"name":"James Proctor","effectuated":69,"total_ma":102,"eff_rate":0.6764705882352942,"tier":"\u226469%","per_policy":40,"payout":2760,"mktg_spend":4721,"salary":3000,"all_in_cost":10481,"mktg_cpa":68,"all_in_cpa":152,"proj_rdr_apps":48,"proj_rdr_cpa":217},{"name":"Vanessa Capote","effectuated":57,"total_ma":78,"eff_rate":0.7307692307692307,"tier":"70-74%","per_policy":55,"payout":3135,"mktg_spend":4160,"salary":3246,"all_in_cost":10541,"mktg_cpa":73,"all_in_cpa":185,"proj_rdr_apps":40,"proj_rdr_cpa":264},{"name":"Anthony Escobar","effectuated":57,"total_ma":81,"eff_rate":0.7037037037037037,"tier":"70-74%","per_policy":55,"payout":3135,"mktg_spend":2429,"salary":3083,"all_in_cost":8647,"mktg_cpa":43,"all_in_cpa":152,"proj_rdr_apps":40,"proj_rdr_cpa":217},{"name":"Siannie Abdala","effectuated":49,"total_ma":63,"eff_rate":0.7777777777777778,"tier":"75-79%","per_policy":70,"payout":3430,"mktg_spend":5681,"salary":2900,"all_in_cost":12011,"mktg_cpa":116,"all_in_cpa":245,"proj_rdr_apps":34,"proj_rdr_cpa":350},{"name":"Logan Kelly","effectuated":48,"total_ma":61,"eff_rate":0.7868852459016393,"tier":"75-79%","per_policy":70,"payout":3360,"mktg_spend":8622,"salary":2517,"all_in_cost":14499,"mktg_cpa":180,"all_in_cpa":302,"proj_rdr_apps":34,"proj_rdr_cpa":432},{"name":"Justin Miles","effectuated":44,"total_ma":65,"eff_rate":0.676923076923077,"tier":"\u226469%","per_policy":40,"payout":1760,"mktg_spend":5920,"salary":2768,"all_in_cost":10448,"mktg_cpa":135,"all_in_cpa":237,"proj_rdr_apps":31,"proj_rdr_cpa":339},{"name":"Juna Defay Lamour","effectuated":42,"total_ma":64,"eff_rate":0.65625,"tier":"\u226469%","per_policy":40,"payout":1680,"mktg_spend":4759,"salary":2689,"all_in_cost":9128,"mktg_cpa":113,"all_in_cpa":217,"proj_rdr_apps":29,"proj_rdr_cpa":310},{"name":"Roodolph Antoine","effectuated":38,"total_ma":59,"eff_rate":0.6440677966101694,"tier":"\u226469%","per_policy":40,"payout":1520,"mktg_spend":4935,"salary":3031,"all_in_cost":9486,"mktg_cpa":130,"all_in_cpa":250,"proj_rdr_apps":27,"proj_rdr_cpa":357},{"name":"Trey Scott","effectuated":35,"total_ma":53,"eff_rate":0.660377358490566,"tier":"\u226469%","per_policy":40,"payout":1400,"mktg_spend":6414,"salary":1518,"all_in_cost":9332,"mktg_cpa":183,"all_in_cpa":267,"proj_rdr_apps":24,"proj_rdr_cpa":381},{"name":"Nathaneal Mclean","effectuated":28,"total_ma":33,"eff_rate":0.8484848484848485,"tier":"80-84%","per_policy":85,"payout":2380,"mktg_spend":2192,"salary":2363,"all_in_cost":6935,"mktg_cpa":78,"all_in_cpa":248,"proj_rdr_apps":20,"proj_rdr_cpa":354},{"name":"Isaiah Joseph","effectuated":27,"total_ma":35,"eff_rate":0.7714285714285715,"tier":"75-79%","per_policy":70,"payout":1890,"mktg_spend":4819,"salary":1597,"all_in_cost":8306,"mktg_cpa":178,"all_in_cpa":308,"proj_rdr_apps":19,"proj_rdr_cpa":439},{"name":"Alex Fernandez","effectuated":27,"total_ma":42,"eff_rate":0.6428571428571429,"tier":"\u226469%","per_policy":40,"payout":1080,"mktg_spend":5296,"salary":2690,"all_in_cost":9066,"mktg_cpa":196,"all_in_cpa":336,"proj_rdr_apps":19,"proj_rdr_cpa":480},{"name":"Latoya Boyd","effectuated":26,"total_ma":33,"eff_rate":0.7878787878787878,"tier":"75-79%","per_policy":70,"payout":1820,"mktg_spend":3033,"salary":767,"all_in_cost":5620,"mktg_cpa":117,"all_in_cpa":216,"proj_rdr_apps":18,"proj_rdr_cpa":309},{"name":"Bryan Vidal","effectuated":26,"total_ma":33,"eff_rate":0.7878787878787878,"tier":"75-79%","per_policy":70,"payout":1820,"mktg_spend":3610,"salary":2789,"all_in_cost":8219,"mktg_cpa":139,"all_in_cpa":316,"proj_rdr_apps":18,"proj_rdr_cpa":452},{"name":"Nicolette Bethel","effectuated":26,"total_ma":35,"eff_rate":0.7428571428571429,"tier":"70-74%","per_policy":55,"payout":1430,"mktg_spend":7228,"salary":2305,"all_in_cost":10963,"mktg_cpa":278,"all_in_cpa":422,"proj_rdr_apps":18,"proj_rdr_cpa":602},{"name":"Byron Morgan","effectuated":25,"total_ma":38,"eff_rate":0.6578947368421053,"tier":"\u226469%","per_policy":40,"payout":1000,"mktg_spend":2754,"salary":1523,"all_in_cost":5277,"mktg_cpa":110,"all_in_cpa":211,"proj_rdr_apps":18,"proj_rdr_cpa":302},{"name":"James DeChene","effectuated":25,"total_ma":38,"eff_rate":0.6578947368421053,"tier":"\u226469%","per_policy":40,"payout":1000,"mktg_spend":3184,"salary":933,"all_in_cost":5117,"mktg_cpa":127,"all_in_cpa":205,"proj_rdr_apps":18,"proj_rdr_cpa":292},{"name":"Josiah Fernandez","effectuated":25,"total_ma":35,"eff_rate":0.7142857142857143,"tier":"70-74%","per_policy":55,"payout":1375,"mktg_spend":5544,"salary":2314,"all_in_cost":9233,"mktg_cpa":222,"all_in_cpa":369,"proj_rdr_apps":18,"proj_rdr_cpa":528},{"name":"Jimmy Nguyen","effectuated":24,"total_ma":33,"eff_rate":0.7272727272727273,"tier":"70-74%","per_policy":55,"payout":1320,"mktg_spend":6596,"salary":1908,"all_in_cost":9824,"mktg_cpa":275,"all_in_cpa":409,"proj_rdr_apps":17,"proj_rdr_cpa":585},{"name":"Berkley Prospere","effectuated":24,"total_ma":31,"eff_rate":0.7741935483870968,"tier":"75-79%","per_policy":70,"payout":1680,"mktg_spend":4663,"salary":1590,"all_in_cost":7933,"mktg_cpa":194,"all_in_cpa":331,"proj_rdr_apps":17,"proj_rdr_cpa":472},{"name":"Kevin Gallego","effectuated":23,"total_ma":36,"eff_rate":0.6388888888888888,"tier":"\u226469%","per_policy":40,"payout":920,"mktg_spend":6102,"salary":2099,"all_in_cost":9121,"mktg_cpa":265,"all_in_cpa":397,"proj_rdr_apps":16,"proj_rdr_cpa":567},{"name":"Kerith Hollingsworth","effectuated":22,"total_ma":29,"eff_rate":0.7586206896551724,"tier":"75-79%","per_policy":70,"payout":1540,"mktg_spend":2372,"salary":964,"all_in_cost":4876,"mktg_cpa":108,"all_in_cpa":222,"proj_rdr_apps":15,"proj_rdr_cpa":317},{"name":"Brandon Luz-Lopez","effectuated":22,"total_ma":36,"eff_rate":0.6111111111111112,"tier":"\u226469%","per_policy":40,"payout":880,"mktg_spend":8033,"salary":2073,"all_in_cost":10986,"mktg_cpa":365,"all_in_cpa":499,"proj_rdr_apps":15,"proj_rdr_cpa":713},{"name":"Jozani Fernandez","effectuated":21,"total_ma":38,"eff_rate":0.5526315789473685,"tier":"\u226469%","per_policy":40,"payout":840,"mktg_spend":5671,"salary":2426,"all_in_cost":8937,"mktg_cpa":270,"all_in_cpa":426,"proj_rdr_apps":15,"proj_rdr_cpa":608},{"name":"Marc Krebs","effectuated":18,"total_ma":19,"eff_rate":0.9473684210526315,"tier":"85%+","per_policy":100,"payout":1800,"mktg_spend":4178,"salary":2205,"all_in_cost":8183,"mktg_cpa":232,"all_in_cpa":455,"proj_rdr_apps":13,"proj_rdr_cpa":649},{"name":"Ryan Schmiedeknecht","effectuated":16,"total_ma":28,"eff_rate":0.5714285714285714,"tier":"\u226469%","per_policy":40,"payout":640,"mktg_spend":1519,"salary":3000,"all_in_cost":5159,"mktg_cpa":95,"all_in_cpa":322,"proj_rdr_apps":11,"proj_rdr_cpa":461},{"name":"Meeah Ventura","effectuated":16,"total_ma":20,"eff_rate":0.8,"tier":"80-84%","per_policy":85,"payout":1360,"mktg_spend":1542,"salary":404,"all_in_cost":3306,"mktg_cpa":96,"all_in_cpa":207,"proj_rdr_apps":11,"proj_rdr_cpa":295},{"name":"Carlos Gonzalez","effectuated":16,"total_ma":19,"eff_rate":0.8421052631578947,"tier":"80-84%","per_policy":85,"payout":1360,"mktg_spend":2406,"salary":550,"all_in_cost":4316,"mktg_cpa":150,"all_in_cpa":270,"proj_rdr_apps":11,"proj_rdr_cpa":385},{"name":"Nicole Baraibar","effectuated":13,"total_ma":15,"eff_rate":0.8666666666666667,"tier":"85%+","per_policy":100,"payout":1300,"mktg_spend":3292,"salary":404,"all_in_cost":4996,"mktg_cpa":253,"all_in_cpa":384,"proj_rdr_apps":9,"proj_rdr_cpa":549},{"name":"Chadwick Snyder","effectuated":12,"total_ma":15,"eff_rate":0.8,"tier":"80-84%","per_policy":85,"payout":1020,"mktg_spend":24,"salary":3000,"all_in_cost":4044,"mktg_cpa":2,"all_in_cpa":337,"proj_rdr_apps":8,"proj_rdr_cpa":481},{"name":"Brandon Budwig","effectuated":9,"total_ma":15,"eff_rate":0.6,"tier":"\u226469%","per_policy":40,"payout":360,"mktg_spend":644,"salary":7346,"all_in_cost":8350,"mktg_cpa":72,"all_in_cpa":928,"proj_rdr_apps":6,"proj_rdr_cpa":1325},{"name":"Christine Saint Fleur","effectuated":9,"total_ma":10,"eff_rate":0.9,"tier":"85%+","per_policy":100,"payout":900,"mktg_spend":1764,"salary":3000,"all_in_cost":5664,"mktg_cpa":196,"all_in_cpa":629,"proj_rdr_apps":6,"proj_rdr_cpa":899},{"name":"Marvin McManus","effectuated":8,"total_ma":13,"eff_rate":0.6153846153846154,"tier":"\u226469%","per_policy":40,"payout":320,"mktg_spend":1457,"salary":0,"all_in_cost":1777,"mktg_cpa":182,"all_in_cpa":222,"proj_rdr_apps":6,"proj_rdr_cpa":317},{"name":"Destiny Ventura","effectuated":7,"total_ma":12,"eff_rate":0.5833333333333334,"tier":"\u226469%","per_policy":40,"payout":280,"mktg_spend":2079,"salary":399,"all_in_cost":2758,"mktg_cpa":297,"all_in_cpa":394,"proj_rdr_apps":5,"proj_rdr_cpa":563},{"name":"Brenda Ciero","effectuated":6,"total_ma":9,"eff_rate":0.6666666666666666,"tier":"\u226469%","per_policy":40,"payout":240,"mktg_spend":949,"salary":1354,"all_in_cost":2543,"mktg_cpa":158,"all_in_cpa":424,"proj_rdr_apps":4,"proj_rdr_cpa":605},{"name":"Ervin Molina","effectuated":4,"total_ma":8,"eff_rate":0.5,"tier":"\u226469%","per_policy":40,"payout":160,"mktg_spend":1522,"salary":1342,"all_in_cost":3024,"mktg_cpa":380,"all_in_cpa":756,"proj_rdr_apps":3,"proj_rdr_cpa":1080},{"name":"Christian Delgado","effectuated":4,"total_ma":5,"eff_rate":0.8,"tier":"80-84%","per_policy":85,"payout":340,"mktg_spend":730,"salary":0,"all_in_cost":1070,"mktg_cpa":182,"all_in_cpa":268,"proj_rdr_apps":3,"proj_rdr_cpa":382},{"name":"Daniel Martinez","effectuated":4,"total_ma":4,"eff_rate":1.0,"tier":"85%+","per_policy":100,"payout":400,"mktg_spend":756,"salary":533,"all_in_cost":1689,"mktg_cpa":189,"all_in_cpa":422,"proj_rdr_apps":3,"proj_rdr_cpa":603},{"name":"Bailey King","effectuated":2,"total_ma":6,"eff_rate":0.3333333333333333,"tier":"\u226469%","per_policy":40,"payout":80,"mktg_spend":645,"salary":932,"all_in_cost":1657,"mktg_cpa":322,"all_in_cpa":828,"proj_rdr_apps":1,"proj_rdr_cpa":1184},{"name":"Leopoldo Romero","effectuated":1,"total_ma":4,"eff_rate":0.25,"tier":"\u226469%","per_policy":40,"payout":40,"mktg_spend":710,"salary":0,"all_in_cost":750,"mktg_cpa":710,"all_in_cpa":750,"proj_rdr_apps":1,"proj_rdr_cpa":1071},{"name":"Raheem Carr","effectuated":1,"total_ma":1,"eff_rate":1.0,"tier":"85%+","per_policy":100,"payout":100,"mktg_spend":1490,"salary":3000,"all_in_cost":4590,"mktg_cpa":1490,"all_in_cpa":4590,"proj_rdr_apps":1,"proj_rdr_cpa":6557},{"name":"Reginal Jeudy","effectuated":0,"total_ma":1,"eff_rate":0.0,"tier":"\u226469%","per_policy":40,"payout":0,"mktg_spend":159,"salary":2261,"all_in_cost":2420,"mktg_cpa":null,"all_in_cpa":null,"proj_rdr_apps":0,"proj_rdr_cpa":null}]};
+const MONTHS={jan:'January',feb:'February',mar:'March'};
+var $=function(s){return document.querySelector(s);};
+var $$=function(s){return document.querySelectorAll(s);};
+var fmt=function(n){return(n==null)?'\u2014':'$'+Math.round(n).toLocaleString();};
+var fmtN=function(n){return(n==null)?'\u2014':Math.round(n).toLocaleString();};
+var currentMonth='mar',currentTier='all',searchTerm='',sortCol='effectuated',sortDir=-1,charts={};
 
-const MONTHS = {jan:'January',feb:'February',mar:'March'};
-const $ = s => document.querySelector(s);
-const $$ = s => document.querySelectorAll(s);
-const fmt = n => n==null?'—':'$'+Math.round(n).toLocaleString();
-const fmtN = n => n==null?'—':Math.round(n).toLocaleString();
-
-let currentMonth = 'mar';
-let currentTier = 'all';
-let searchTerm = '';
-let sortCol = 'effectuated';
-let sortDir = -1;
-let charts = {};
-
-function summary(month){
-  const d = DATA[month].filter(a=>a.effectuated>0);
-  const all = DATA[month];
-  const tp = all.reduce((s,a)=>s+a.effectuated,0);
-  const tm = all.reduce((s,a)=>s+a.total_ma,0);
-  const tai = all.reduce((s,a)=>s+a.all_in_cost,0);
-  const ms = all.reduce((s,a)=>s+a.mktg_spend,0);
-  const sal = all.reduce((s,a)=>s+a.salary,0);
-  return {active:d.length,effectuated:tp,total_ma:tm,all_in:tai,mktg:ms,salary:sal,
-    eff_rate:tm?tp/tm:0,mktg_cpa:tp?ms/tp:0,all_in_cpa:tp?tai/tp:0,rdr_cpa:tp?tai/(tp*.7):0};
+function toggleTheme(){
+  var html=document.documentElement;
+  var current=html.getAttribute('data-theme');
+  var next=current==='light'?'dark':'light';
+  html.setAttribute('data-theme',next);
+  $('#themeLabel').textContent=next==='light'?'Light':'Dark';
+  if(currentMonth==='trend')renderTrend();
 }
 
+function summary(month){
+  var all=DATA[month];
+  var active=all.filter(function(a){return a.effectuated>0;});
+  var tp=all.reduce(function(s,a){return s+a.effectuated;},0);
+  var tm=all.reduce(function(s,a){return s+a.total_ma;},0);
+  var tai=all.reduce(function(s,a){return s+a.all_in_cost;},0);
+  var ms=all.reduce(function(s,a){return s+a.mktg_spend;},0);
+  var sal=all.reduce(function(s,a){return s+a.salary;},0);
+  return{active:active.length,effectuated:tp,total_ma:tm,all_in:tai,mktg:ms,salary:sal,
+    eff_rate:tm?tp/tm:0,mktg_cpa:tp?ms/tp:0,all_in_cpa:tp?tai/tp:0,rdr_cpa:tp?tai/(tp*.7):0};
+}
 function renderKpis(month){
-  const s = summary(month);
-  const prev = month==='feb'?summary('jan'):month==='mar'?summary('feb'):null;
-  const delta = (curr,p,invert)=>{
-    if(!p) return '';
-    const d = curr-p;
-    const pct = p?((d/p)*100).toFixed(0):'';
-    const cls = (invert?(d<0):(d>0))?'up':'down';
-    const arrow = (invert?(d<0):(d>0))?'&#9650;':'&#9660;';
-    return `<div class="kpi-delta ${cls}">${arrow} ${Math.abs(d).toLocaleString()} (${pct>0?'+':''}${pct}%) vs prev</div>`;
-  };
-  $('#kpis').innerHTML = [
+  var s=summary(month);
+  var prev=month==='feb'?summary('jan'):month==='mar'?summary('feb'):null;
+  function delta(curr,p,invert){if(!prev)return'';var d=curr-p;var pct=p?((d/p)*100).toFixed(0):'';var cls=(invert?(d<0):(d>0))?'up':'down';var arrow=(invert?(d<0):(d>0))?'&#9650;':'&#9660;';return'<div class="kpi-delta '+cls+'">'+arrow+' '+Math.abs(Math.round(d)).toLocaleString()+' ('+(pct>0?'+':'')+pct+'%) vs prev</div>';}
+  var rawMktgCpa=s.total_ma?s.mktg/s.total_ma:0;
+  var rawAllInCpa=s.total_ma?s.all_in/s.total_ma:0;
+  var rawRdrCpa=s.total_ma?s.all_in/(s.total_ma*.7):0;
+  var totalCost=s.all_in;
+  var totalPayout=s.all_in-s.mktg-s.salary;
+  $('#kpis').innerHTML='<div style="margin-bottom:6px"><div style="font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--teal);font-weight:700;margin-bottom:8px">Effectuated Metrics</div><div class="kpi-grid" style="margin-bottom:0">'
+    +[
     {l:'Active Agents',v:s.active,d:prev?delta(s.active,prev.active,false):''},
-    {l:'Effectuated Apps',v:fmtN(s.effectuated),d:prev?delta(s.effectuated,prev.effectuated,false):''},
+    {l:'Effectuated',v:fmtN(s.effectuated),d:prev?delta(s.effectuated,prev.effectuated,false):''},
     {l:'Effectuation Rate',v:Math.round(s.eff_rate*100)+'%',d:''},
     {l:'Mktg CPA',v:fmt(s.mktg_cpa),d:prev?delta(s.mktg_cpa,prev.mktg_cpa,true):''},
     {l:'All-In CPA',v:fmt(s.all_in_cpa),d:prev?delta(s.all_in_cpa,prev.all_in_cpa,true):''},
     {l:'Projected RDR CPA',v:fmt(s.rdr_cpa),d:prev?delta(s.rdr_cpa,prev.rdr_cpa,true):''},
-  ].map(k=>`<div class="kpi"><div class="kpi-label">${k.l}</div><div class="kpi-value">${k.v}</div>${k.d}</div>`).join('');
+  ].map(function(k){return'<div class="kpi"><div class="kpi-label">'+k.l+'</div><div class="kpi-value">'+k.v+'</div>'+k.d+'</div>';}).join('')
+    +'</div></div>'
+    +'<div style="margin-bottom:6px"><div style="font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--pink-dark);font-weight:700;margin-bottom:8px">Raw Totals (All Deals Written)</div><div class="kpi-grid" style="margin-bottom:0">'
+    +[
+    {l:'Total Deals',v:fmtN(s.total_ma),d:prev?delta(s.total_ma,prev.total_ma,false):''},
+    {l:'Total Payout',v:fmt(totalPayout),d:''},
+    {l:'Total Mktg Spend',v:fmt(s.mktg),d:prev?delta(s.mktg,prev.mktg,true):''},
+    {l:'Total All-In Cost',v:fmt(totalCost),d:prev?delta(totalCost,prev.all_in,true):''},
+    {l:'Raw All-In CPA',v:fmt(rawAllInCpa),d:prev?delta(rawAllInCpa,prev.total_ma?prev.all_in/prev.total_ma:0,true):''},
+    {l:'Raw RDR CPA',v:fmt(rawRdrCpa),d:''},
+  ].map(function(k){return'<div class="kpi"><div class="kpi-label">'+k.l+'</div><div class="kpi-value">'+k.v+'</div>'+k.d+'</div>';}).join('')
+    +'</div></div>';
 }
-
 function cpaPill(val,thresholds){
-  if(val==null||val===0) return '<span class="pill">—</span>';
-  const v = Math.round(val);
-  if(v<=thresholds[0]) return `<span class="pill green">${fmt(v)}</span>`;
-  if(v<=thresholds[1]) return `<span class="pill yellow">${fmt(v)}</span>`;
-  return `<span class="pill red">${fmt(v)}</span>`;
+  if(val==null||val===0)return'<span class="pill">\u2014</span>';
+  var v=Math.round(val);
+  if(v<=thresholds[0])return'<span class="pill green">'+fmt(v)+'</span>';
+  if(v<=thresholds[1])return'<span class="pill yellow">'+fmt(v)+'</span>';
+  return'<span class="pill red">'+fmt(v)+'</span>';
 }
-
-const COLS = [
+var COLS=[
   {key:'name',label:'Agent',align:'left'},
   {key:'effectuated',label:'Effectuated'},
   {key:'total_ma',label:'Total MA'},
-  {key:'eff_rate',label:'Effectuation Rate',fmt:v=>v?Math.round(typeof v==='number'&&v<1?v*100:v)+'%':'—'},
-  {key:'tier',label:'Tier'},
+  {key:'eff_rate',label:'Eff. Rate',fmt:function(v){return v?Math.round(typeof v==='number'&&v<1?v*100:v)+'%':'\u2014';}},
   {key:'per_policy',label:'Per Policy',fmt:fmt},
   {key:'payout',label:'Payout',fmt:fmt},
   {key:'mktg_spend',label:'Mktg Spend',fmt:fmt},
   {key:'salary',label:'Salary',fmt:fmt},
   {key:'all_in_cost',label:'All-In Cost',fmt:fmt},
-  {key:'mktg_cpa',label:'Mktg CPA',fmt:v=>cpaPill(v,[99,125])},
-  {key:'all_in_cpa',label:'All-In CPA',fmt:v=>cpaPill(v,[224,275])},
+  {key:'mktg_cpa',label:'Mktg CPA',fmt:function(v){return cpaPill(v,[99,125]);}},
+  {key:'all_in_cpa',label:'All-In CPA',fmt:function(v){return cpaPill(v,[224,275]);}},
   {key:'proj_rdr_apps',label:'RDR Apps'},
-  {key:'proj_rdr_cpa',label:'RDR CPA',fmt:v=>cpaPill(v,[400,525])},
+  {key:'proj_rdr_cpa',label:'RDR CPA',fmt:function(v){return cpaPill(v,[400,525]);}},
 ];
-
 function filtered(){
-  let d = DATA[currentMonth];
-  if(currentTier==='active') d=d.filter(a=>a.effectuated>0);
-  else if(currentTier!=='all') d=d.filter(a=>a.tier===currentTier);
-  if(searchTerm) d=d.filter(a=>a.name.toLowerCase().includes(searchTerm));
-  d.sort((a,b)=>{
-    let va=a[sortCol],vb=b[sortCol];
-    if(typeof va==='string') return sortDir*va.localeCompare(vb);
-    return sortDir*((va||0)-(vb||0));
-  });
+  var d=DATA[currentMonth];
+  if(currentTier==='active')d=d.filter(function(a){return a.effectuated>0;});
+  else if(currentTier!=='all')d=d.filter(function(a){return a.tier===currentTier;});
+  if(searchTerm)d=d.filter(function(a){return a.name.toLowerCase().includes(searchTerm);});
+  d.sort(function(a,b){var va=a[sortCol],vb=b[sortCol];if(typeof va==='string')return sortDir*va.localeCompare(vb);return sortDir*((va||0)-(vb||0));});
   return d;
 }
-
 function renderTable(){
-  const hdr = COLS.map(c=>{
-    const sorted = c.key===sortCol;
-    const arrow = sorted?(sortDir>0?'&#9650;':'&#9660;'):'&#8597;';
-    return `<th class="${sorted?'sorted':''}" data-col="${c.key}" style="text-align:${c.align||'center'}">${c.label}<span class="arrow">${arrow}</span></th>`;
-  }).join('');
-  $('#thead').innerHTML = `<tr>${hdr}</tr>`;
-
-  const rows = filtered();
-  const totals = {effectuated:0,total_ma:0,payout:0,mktg_spend:0,salary:0,all_in_cost:0,proj_rdr_apps:0};
-  rows.forEach(r=>{for(const k in totals) totals[k]+=r[k]||0;});
-  totals.eff_rate = totals.total_ma?totals.effectuated/totals.total_ma:0;
-  totals.mktg_cpa = totals.effectuated?totals.mktg_spend/totals.effectuated:0;
-  totals.all_in_cpa = totals.effectuated?totals.all_in_cost/totals.effectuated:0;
-  totals.proj_rdr_cpa = totals.effectuated?totals.all_in_cost/(totals.effectuated*.7):0;
-
-  let html = rows.map(r=>{
-    const cells = COLS.map(c=>{
-      let v = r[c.key];
-      const display = c.fmt?c.fmt(v):(v!=null?v:'—');
-      return `<td style="text-align:${c.align||'center'}">${display}</td>`;
-    }).join('');
-    return `<tr>${cells}</tr>`;
-  }).join('');
-
-  const totalCells = COLS.map(c=>{
-    if(c.key==='name') return '<td style="text-align:left">TOTAL</td>';
-    if(c.key==='tier'||c.key==='per_policy') return '<td></td>';
-    const v = totals[c.key];
-    const display = c.fmt?c.fmt(v):(v!=null?fmtN(v):'');
-    return `<td style="text-align:center">${display}</td>`;
-  }).join('');
-  html += `<tr class="total-row">${totalCells}</tr>`;
-
-  $('#tbody').innerHTML = html;
-  $('#tableTitle').textContent = `${MONTHS[currentMonth]} — ${rows.length} Agents`;
+  var hdr=COLS.map(function(c){var sorted=c.key===sortCol;var arrow=sorted?(sortDir>0?'&#9650;':'&#9660;'):'&#8597;';return'<th class="'+(sorted?'sorted':'')+'" data-col="'+c.key+'" style="text-align:'+(c.align||'center')+'">'+c.label+'<span class="arrow">'+arrow+'</span></th>';}).join('');
+  $('#thead').innerHTML='<tr>'+hdr+'</tr>';
+  var rows=filtered();
+  var totals={effectuated:0,total_ma:0,payout:0,mktg_spend:0,salary:0,all_in_cost:0,proj_rdr_apps:0};
+  rows.forEach(function(r){for(var k in totals)totals[k]+=(r[k]||0);});
+  totals.eff_rate=totals.total_ma?totals.effectuated/totals.total_ma:0;
+  totals.mktg_cpa=totals.effectuated?totals.mktg_spend/totals.effectuated:0;
+  totals.all_in_cpa=totals.effectuated?totals.all_in_cost/totals.effectuated:0;
+  totals.proj_rdr_cpa=totals.effectuated?totals.all_in_cost/(totals.effectuated*.7):0;
+  var html=rows.map(function(r){var cells=COLS.map(function(c){var v=r[c.key];var display=c.fmt?c.fmt(v):(v!=null?v:'\u2014');return'<td style="text-align:'+(c.align||'center')+'">'+display+'</td>';}).join('');return'<tr>'+cells+'</tr>';}).join('');
+  var totalCells=COLS.map(function(c){if(c.key==='name')return'<td style="text-align:left;padding-left:20px">TOTAL</td>';if(c.key==='per_policy')return'<td></td>';var v=totals[c.key];var display=c.fmt?c.fmt(v):(v!=null?fmtN(v):'');return'<td style="text-align:center">'+display+'</td>';}).join('');
+  html+='<tr class="total-row">'+totalCells+'</tr>';
+  $('#tbody').innerHTML=html;
+  $('#tableTitle').textContent=MONTHS[currentMonth]+' \u2014 '+rows.length+' Agents';
 }
-
-function renderCharts(){
-  const rows = filtered().filter(a=>a.effectuated>0).slice(0,20);
-  const labels = rows.map(r=>r.name.split(' ')[1]||r.name);
-
-  if(charts.cpa) charts.cpa.destroy();
-  charts.cpa = new Chart($('#cpaChart'),{
-    type:'bar',
-    data:{labels,datasets:[
-      {label:'Mktg CPA',data:rows.map(r=>Math.round(r.mktg_cpa||0)),backgroundColor:'rgba(59,130,246,.7)',borderRadius:4},
-      {label:'All-In CPA',data:rows.map(r=>Math.round(r.all_in_cpa||0)),backgroundColor:'rgba(168,85,247,.7)',borderRadius:4},
-      {label:'RDR CPA',data:rows.map(r=>Math.round(r.proj_rdr_cpa||0)),backgroundColor:'rgba(251,146,60,.7)',borderRadius:4},
-    ]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#8b8fa3',font:{size:11}}}},
-      scales:{x:{ticks:{color:'#8b8fa3',font:{size:10}},grid:{color:'rgba(255,255,255,.04)'}},
-              y:{ticks:{color:'#8b8fa3',callback:v=>'$'+v},grid:{color:'rgba(255,255,255,.06)'}}}}
-  });
-
-  if(charts.cost) charts.cost.destroy();
-  charts.cost = new Chart($('#costChart'),{
-    type:'bar',
-    data:{labels,datasets:[
-      {label:'Payout',data:rows.map(r=>r.payout),backgroundColor:'rgba(34,197,94,.7)',borderRadius:4},
-      {label:'Mktg Spend',data:rows.map(r=>r.mktg_spend),backgroundColor:'rgba(59,130,246,.7)',borderRadius:4},
-      {label:'Salary',data:rows.map(r=>r.salary),backgroundColor:'rgba(251,146,60,.7)',borderRadius:4},
-    ]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#8b8fa3',font:{size:11}}}},
-      scales:{x:{stacked:true,ticks:{color:'#8b8fa3',font:{size:10}},grid:{color:'rgba(255,255,255,.04)'}},
-              y:{stacked:true,ticks:{color:'#8b8fa3',callback:v=>'$'+v.toLocaleString()},grid:{color:'rgba(255,255,255,.06)'}}}}
-  });
+function getChartColors(){
+  var dark=document.documentElement.getAttribute('data-theme')==='dark';
+  return{grid:dark?'rgba(255,255,255,.06)':'rgba(0,0,0,.06)',tick:dark?'#8b8fa3':'#6b6560',
+    teal:dark?'rgba(109,216,200,.7)':'rgba(5,99,86,.7)',pink:dark?'rgba(209,152,182,.7)':'rgba(209,152,182,.8)',
+    blue:'rgba(59,130,246,.7)',purple:'rgba(168,85,247,.7)',orange:'rgba(251,146,60,.7)',green:'rgba(13,128,80,.7)'};
 }
-
 function renderTrend(){
-  const months = ['jan','feb','mar'];
-  const labels = ['January','February','March'];
-  const sums = months.map(summary);
-
-  $('#trendKpis').innerHTML = [
-    {l:'Q1 Total Effectuated',v:fmtN(sums.reduce((s,m)=>s+m.effectuated,0))},
-    {l:'Q1 Total All-In Cost',v:fmt(sums.reduce((s,m)=>s+m.all_in,0))},
-    {l:'Q1 Avg All-In CPA',v:fmt(sums.reduce((s,m)=>s+m.all_in,0)/sums.reduce((s,m)=>s+m.effectuated,0))},
-    {l:'Q1 Avg RDR CPA',v:fmt(sums.reduce((s,m)=>s+m.all_in,0)/(sums.reduce((s,m)=>s+m.effectuated,0)*.7))},
-    {l:'Best Month (CPA)',v:labels[sums.indexOf(sums.reduce((a,b)=>a.all_in_cpa<b.all_in_cpa?a:b))]},
-    {l:'Peak Agents',v:Math.max(...sums.map(s=>s.active))},
-  ].map(k=>`<div class="kpi"><div class="kpi-label">${k.l}</div><div class="kpi-value">${k.v}</div></div>`).join('');
-
-  if(charts.trendApps) charts.trendApps.destroy();
-  charts.trendApps = new Chart($('#trendAppsChart'),{
-    type:'bar',
-    data:{labels,datasets:[
-      {label:'Effectuated',data:sums.map(s=>s.effectuated),backgroundColor:'rgba(34,197,94,.7)',borderRadius:6},
-      {label:'Total MA',data:sums.map(s=>s.total_ma),backgroundColor:'rgba(59,130,246,.3)',borderRadius:6},
-    ]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#8b8fa3'}}},
-      scales:{x:{ticks:{color:'#8b8fa3'},grid:{display:false}},y:{ticks:{color:'#8b8fa3'},grid:{color:'rgba(255,255,255,.06)'}}}}
-  });
-
-  if(charts.trendCpa) charts.trendCpa.destroy();
-  charts.trendCpa = new Chart($('#trendCpaChart'),{
-    type:'line',
-    data:{labels,datasets:[
-      {label:'Mktg CPA',data:sums.map(s=>Math.round(s.mktg_cpa)),borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,.1)',fill:true,tension:.3,pointRadius:6},
-      {label:'All-In CPA',data:sums.map(s=>Math.round(s.all_in_cpa)),borderColor:'#a855f7',backgroundColor:'rgba(168,85,247,.1)',fill:true,tension:.3,pointRadius:6},
-      {label:'RDR CPA',data:sums.map(s=>Math.round(s.rdr_cpa)),borderColor:'#fb923c',backgroundColor:'rgba(251,146,60,.1)',fill:true,tension:.3,pointRadius:6},
-    ]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#8b8fa3'}}},
-      scales:{x:{ticks:{color:'#8b8fa3'},grid:{display:false}},y:{ticks:{color:'#8b8fa3',callback:v=>'$'+v},grid:{color:'rgba(255,255,255,.06)'}}}}
-  });
-
-  if(charts.trendCost) charts.trendCost.destroy();
-  charts.trendCost = new Chart($('#trendCostChart'),{
-    type:'bar',
-    data:{labels,datasets:[
-      {label:'Payout',data:sums.map(s=>s.effectuated>0?sums[0].all_in-sums[0].mktg-sums[0].salary:0).map((_,i)=>sums[i].all_in-sums[i].mktg-sums[i].salary),backgroundColor:'rgba(34,197,94,.7)',borderRadius:4},
-      {label:'Mktg Spend',data:sums.map(s=>s.mktg),backgroundColor:'rgba(59,130,246,.7)',borderRadius:4},
-      {label:'Salary',data:sums.map(s=>s.salary),backgroundColor:'rgba(251,146,60,.7)',borderRadius:4},
-    ]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#8b8fa3'}}},
-      scales:{x:{stacked:true,ticks:{color:'#8b8fa3'},grid:{display:false}},y:{stacked:true,ticks:{color:'#8b8fa3',callback:v=>'$'+Math.round(v/1000)+'k'},grid:{color:'rgba(255,255,255,.06)'}}}}
-  });
-
-  if(charts.trendAgent) charts.trendAgent.destroy();
-  charts.trendAgent = new Chart($('#trendAgentChart'),{
-    type:'bar',
-    data:{labels,datasets:[
-      {label:'Active Agents',data:sums.map(s=>s.active),backgroundColor:'rgba(99,102,241,.7)',borderRadius:6,yAxisID:'y'},
-      {label:'Avg Apps/Agent',data:sums.map(s=>s.active?Math.round(s.effectuated/s.active):0),type:'line',borderColor:'#22c55e',pointRadius:6,yAxisID:'y1'},
-    ]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#8b8fa3'}}},
-      scales:{x:{ticks:{color:'#8b8fa3'},grid:{display:false}},
-              y:{position:'left',ticks:{color:'#8b8fa3'},grid:{color:'rgba(255,255,255,.06)'}},
-              y1:{position:'right',ticks:{color:'#22c55e'},grid:{display:false}}}}
-  });
+  var months=['jan','feb','mar'],labels=['January','February','March'],sums=months.map(summary),cc=getChartColors();
+  $('#trendKpis').innerHTML=[
+    {l:'Q1 Total Effectuated',v:fmtN(sums.reduce(function(s,m){return s+m.effectuated;},0))},
+    {l:'Q1 Total All-In Cost',v:fmt(sums.reduce(function(s,m){return s+m.all_in;},0))},
+    {l:'Q1 Avg All-In CPA',v:fmt(sums.reduce(function(s,m){return s+m.all_in;},0)/sums.reduce(function(s,m){return s+m.effectuated;},0))},
+    {l:'Q1 Avg RDR CPA',v:fmt(sums.reduce(function(s,m){return s+m.all_in;},0)/(sums.reduce(function(s,m){return s+m.effectuated;},0)*.7))},
+    {l:'Best Month (CPA)',v:labels[sums.indexOf(sums.reduce(function(a,b){return a.all_in_cpa<b.all_in_cpa?a:b;}))]},
+    {l:'Peak Agents',v:Math.max.apply(null,sums.map(function(s){return s.active;}))},
+  ].map(function(k){return'<div class="kpi"><div class="kpi-label">'+k.l+'</div><div class="kpi-value">'+k.v+'</div></div>';}).join('');
+  if(charts.trendApps)charts.trendApps.destroy();
+  charts.trendApps=new Chart($('#trendAppsChart'),{type:'bar',data:{labels:labels,datasets:[
+    {label:'Effectuated',data:sums.map(function(s){return s.effectuated;}),backgroundColor:cc.teal,borderRadius:6},
+    {label:'Total MA',data:sums.map(function(s){return s.total_ma;}),backgroundColor:cc.pink,borderRadius:6},
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:cc.tick}}},scales:{x:{ticks:{color:cc.tick},grid:{display:false}},y:{ticks:{color:cc.tick},grid:{color:cc.grid}}}}});
+  if(charts.trendCpa)charts.trendCpa.destroy();
+  charts.trendCpa=new Chart($('#trendCpaChart'),{type:'line',data:{labels:labels,datasets:[
+    {label:'Mktg CPA',data:sums.map(function(s){return Math.round(s.mktg_cpa);}),borderColor:'#056356',backgroundColor:'rgba(5,99,86,.1)',fill:true,tension:.3,pointRadius:6},
+    {label:'All-In CPA',data:sums.map(function(s){return Math.round(s.all_in_cpa);}),borderColor:'#D198B6',backgroundColor:'rgba(209,152,182,.1)',fill:true,tension:.3,pointRadius:6},
+    {label:'RDR CPA',data:sums.map(function(s){return Math.round(s.rdr_cpa);}),borderColor:cc.orange,backgroundColor:'rgba(251,146,60,.1)',fill:true,tension:.3,pointRadius:6},
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:cc.tick}}},scales:{x:{ticks:{color:cc.tick},grid:{display:false}},y:{ticks:{color:cc.tick,callback:function(v){return'$'+v;}},grid:{color:cc.grid}}}}});
+  if(charts.trendCost)charts.trendCost.destroy();
+  charts.trendCost=new Chart($('#trendCostChart'),{type:'bar',data:{labels:labels,datasets:[
+    {label:'Payout',data:sums.map(function(s){return s.all_in-s.mktg-s.salary;}),backgroundColor:cc.teal,borderRadius:4},
+    {label:'Mktg Spend',data:sums.map(function(s){return s.mktg;}),backgroundColor:cc.pink,borderRadius:4},
+    {label:'Salary',data:sums.map(function(s){return s.salary;}),backgroundColor:cc.orange,borderRadius:4},
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:cc.tick}}},scales:{x:{stacked:true,ticks:{color:cc.tick},grid:{display:false}},y:{stacked:true,ticks:{color:cc.tick,callback:function(v){return'$'+Math.round(v/1000)+'k';}},grid:{color:cc.grid}}}}});
+  if(charts.trendAgent)charts.trendAgent.destroy();
+  charts.trendAgent=new Chart($('#trendAgentChart'),{type:'bar',data:{labels:labels,datasets:[
+    {label:'Active Agents',data:sums.map(function(s){return s.active;}),backgroundColor:cc.teal,borderRadius:6,yAxisID:'y'},
+    {label:'Avg Apps/Agent',data:sums.map(function(s){return s.active?Math.round(s.effectuated/s.active):0;}),type:'line',borderColor:'#D198B6',pointBackgroundColor:'#D198B6',pointRadius:6,yAxisID:'y1'},
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:cc.tick}}},scales:{x:{ticks:{color:cc.tick},grid:{display:false}},y:{position:'left',ticks:{color:cc.tick},grid:{color:cc.grid}},y1:{position:'right',ticks:{color:'#D198B6'},grid:{display:false}}}}});
 }
-
 function render(){
-  if(currentMonth==='trend'){
-    $('#monthView').style.display='none';
-    $('#trendView').style.display='block';
-    renderTrend();
-  } else {
-    $('#monthView').style.display='block';
-    $('#trendView').style.display='none';
-    renderKpis(currentMonth);
-    renderTable();
-    renderCharts();
-  }
+  if(currentMonth==='trend'){$('#monthView').style.display='none';$('#trendView').style.display='block';renderTrend();}
+  else{$('#monthView').style.display='block';$('#trendView').style.display='none';renderKpis(currentMonth);renderTable();}
 }
-
-$$('.tab').forEach(t=>t.addEventListener('click',()=>{
-  $$('.tab').forEach(b=>b.classList.remove('active'));
-  t.classList.add('active');
-  currentMonth=t.dataset.month;
-  render();
-}));
-
-$$('.chip').forEach(c=>c.addEventListener('click',()=>{
-  $$('.chip').forEach(b=>b.classList.remove('active'));
-  c.classList.add('active');
-  currentTier=c.dataset.tier;
-  renderTable();renderCharts();
-}));
-
-$('#searchInput').addEventListener('input',e=>{searchTerm=e.target.value.toLowerCase();renderTable();});
-
-document.addEventListener('click',e=>{
-  if(e.target.closest('th[data-col]')){
-    const col=e.target.closest('th').dataset.col;
-    if(sortCol===col) sortDir*=-1;
-    else{sortCol=col;sortDir=-1;}
-    renderTable();
-  }
-});
-
+$$('.tab').forEach(function(t){t.addEventListener('click',function(){$$('.tab').forEach(function(b){b.classList.remove('active');});t.classList.add('active');currentMonth=t.dataset.month;render();});});
+$$('.chip').forEach(function(c){c.addEventListener('click',function(){$$('.chip').forEach(function(b){b.classList.remove('active');});c.classList.add('active');currentTier=c.dataset.tier;renderTable();});});
+$('#searchInput').addEventListener('input',function(e){searchTerm=e.target.value.toLowerCase();renderTable();});
+document.addEventListener('click',function(e){if(e.target.closest('th[data-col]')){var col=e.target.closest('th').dataset.col;if(sortCol===col)sortDir*=-1;else{sortCol=col;sortDir=-1;}renderTable();}});
 render();
 </script>
 </body>

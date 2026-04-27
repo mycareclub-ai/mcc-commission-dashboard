@@ -4,8 +4,8 @@
       {
         "name": "Anthony Escobar",
         "effectuated": 74,
-        "total_ma": 84,
-        "eff_rate": 0.8809523809523809,
+        "total_ma": 85,
+        "eff_rate": 0.8705882352941177,
         "tier": "85%+",
         "per_policy": 100.0,
         "payout": 7400.0,
@@ -68,8 +68,8 @@
       {
         "name": "Jack Hauser",
         "effectuated": 44,
-        "total_ma": 56,
-        "eff_rate": 0.7857142857142857,
+        "total_ma": 57,
+        "eff_rate": 0.7719298245614035,
         "tier": "75-79%",
         "per_policy": 70.0,
         "payout": 3080.0,
@@ -292,18 +292,18 @@
       {
         "name": "Alex Fernandez",
         "effectuated": 31,
-        "total_ma": 41,
-        "eff_rate": 0.7560975609756098,
-        "tier": "75-79%",
-        "per_policy": 70.0,
-        "payout": 2170.0,
+        "total_ma": 42,
+        "eff_rate": 0.7380952380952381,
+        "tier": "70-74%",
+        "per_policy": 55.0,
+        "payout": 1705.0,
         "mktg_spend": 0,
         "salary": 0,
-        "all_in_cost": 2170,
+        "all_in_cost": 1705,
         "mktg_cpa": 0,
-        "all_in_cpa": 70,
+        "all_in_cpa": 55,
         "proj_rdr_apps": 22,
-        "proj_rdr_cpa": 99
+        "proj_rdr_cpa": 78
       },
       {
         "name": "Michael Triebwasser",
@@ -324,18 +324,18 @@
       {
         "name": "Shaun Biddix",
         "effectuated": 30,
-        "total_ma": 35,
-        "eff_rate": 0.8571428571428571,
-        "tier": "85%+",
-        "per_policy": 100.0,
-        "payout": 3000.0,
+        "total_ma": 36,
+        "eff_rate": 0.8333333333333334,
+        "tier": "80-84%",
+        "per_policy": 85.0,
+        "payout": 2550.0,
         "mktg_spend": 0,
         "salary": 0,
-        "all_in_cost": 3000,
+        "all_in_cost": 2550,
         "mktg_cpa": 0,
-        "all_in_cpa": 100,
+        "all_in_cpa": 85,
         "proj_rdr_apps": 21,
-        "proj_rdr_cpa": 143
+        "proj_rdr_cpa": 121
       },
       {
         "name": "Josiah Fernandez",
@@ -420,8 +420,8 @@
       {
         "name": "Michele Rubenstein",
         "effectuated": 23,
-        "total_ma": 29,
-        "eff_rate": 0.7931034482758621,
+        "total_ma": 30,
+        "eff_rate": 0.7666666666666667,
         "tier": "75-79%",
         "per_policy": 70.0,
         "payout": 1610.0,
@@ -468,8 +468,8 @@
       {
         "name": "Christine Saint Fleur",
         "effectuated": 21,
-        "total_ma": 37,
-        "eff_rate": 0.5675675675675675,
+        "total_ma": 38,
+        "eff_rate": 0.5526315789473685,
         "tier": "≤69%",
         "per_policy": 40.0,
         "payout": 840.0,
@@ -516,18 +516,18 @@
       {
         "name": "Colton Stanley",
         "effectuated": 20,
-        "total_ma": 25,
-        "eff_rate": 0.8,
-        "tier": "80-84%",
-        "per_policy": 85.0,
-        "payout": 1700.0,
+        "total_ma": 26,
+        "eff_rate": 0.7692307692307693,
+        "tier": "75-79%",
+        "per_policy": 70.0,
+        "payout": 1400.0,
         "mktg_spend": 0,
         "salary": 0,
-        "all_in_cost": 1700,
+        "all_in_cost": 1400,
         "mktg_cpa": 0,
-        "all_in_cpa": 85,
+        "all_in_cpa": 70,
         "proj_rdr_apps": 14,
-        "proj_rdr_cpa": 121
+        "proj_rdr_cpa": 100
       },
       {
         "name": "Jozani Fernandez",
@@ -628,8 +628,8 @@
       {
         "name": "Torrie Holmes",
         "effectuated": 18,
-        "total_ma": 27,
-        "eff_rate": 0.6666666666666666,
+        "total_ma": 28,
+        "eff_rate": 0.6428571428571429,
         "tier": "≤69%",
         "per_policy": 40.0,
         "payout": 720.0,
@@ -660,8 +660,8 @@
       {
         "name": "Vanessa Capote",
         "effectuated": 18,
-        "total_ma": 28,
-        "eff_rate": 0.6428571428571429,
+        "total_ma": 29,
+        "eff_rate": 0.6206896551724138,
         "tier": "≤69%",
         "per_policy": 40.0,
         "payout": 720.0,
@@ -1193,7 +1193,7 @@
     "months": {
       "apr": "April"
     },
-    "generated_at": "2026-04-27T20:26:57Z",
-    "elapsed_ms": 2303.7
+    "generated_at": "2026-04-27T21:03:09Z",
+    "elapsed_ms": 3073.4
   }
 }

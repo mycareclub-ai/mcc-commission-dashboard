@@ -690,6 +690,22 @@
         "proj_rdr_cpa": 138
       },
       {
+        "name": "Brandon Budwig",
+        "effectuated": 16,
+        "total_ma": 18,
+        "eff_rate": 0.8888888888888888,
+        "tier": "85%+",
+        "per_policy": 100.0,
+        "payout": 1600.0,
+        "mktg_spend": 0,
+        "salary": 0,
+        "all_in_cost": 1600,
+        "mktg_cpa": 0,
+        "all_in_cpa": 100,
+        "proj_rdr_apps": 11,
+        "proj_rdr_cpa": 145
+      },
+      {
         "name": "Destiny Ventura",
         "effectuated": 16,
         "total_ma": 17,
@@ -720,22 +736,6 @@
         "all_in_cpa": 55,
         "proj_rdr_apps": 11,
         "proj_rdr_cpa": 80
-      },
-      {
-        "name": "Brandon Budwig",
-        "effectuated": 15,
-        "total_ma": 18,
-        "eff_rate": 0.8333333333333334,
-        "tier": "80-84%",
-        "per_policy": 85.0,
-        "payout": 1275.0,
-        "mktg_spend": 0,
-        "salary": 0,
-        "all_in_cost": 1275,
-        "mktg_cpa": 0,
-        "all_in_cpa": 85,
-        "proj_rdr_apps": 10,
-        "proj_rdr_cpa": 128
       },
       {
         "name": "Travis Lopez",
@@ -1193,7 +1193,7 @@
     "months": {
       "apr": "April"
     },
-    "generated_at": "2026-04-29T15:13:00Z",
-    "elapsed_ms": 2391.7
+    "generated_at": "2026-04-29T15:13:30Z",
+    "elapsed_ms": 2205.4
   }
 }

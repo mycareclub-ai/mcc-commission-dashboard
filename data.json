@@ -2758,22 +2758,6 @@
         "proj_rdr_cpa": 143
       },
       {
-        "name": "Jimmy Nguyen",
-        "effectuated": 28,
-        "total_ma": 31,
-        "eff_rate": 0.9032258064516129,
-        "tier": "85%+",
-        "per_policy": 100.0,
-        "payout": 2800.0,
-        "mktg_spend": 0,
-        "salary": 0,
-        "all_in_cost": 2800,
-        "mktg_cpa": 0,
-        "all_in_cpa": 100,
-        "proj_rdr_apps": 20,
-        "proj_rdr_cpa": 140
-      },
-      {
         "name": "Juna Defay Lamour",
         "effectuated": 28,
         "total_ma": 28,
@@ -2790,26 +2774,42 @@
         "proj_rdr_cpa": 140
       },
       {
-        "name": "James Proctor",
-        "effectuated": 26,
-        "total_ma": 30,
-        "eff_rate": 0.8666666666666667,
+        "name": "Jimmy Nguyen",
+        "effectuated": 27,
+        "total_ma": 31,
+        "eff_rate": 0.8709677419354839,
         "tier": "85%+",
         "per_policy": 100.0,
-        "payout": 2600.0,
+        "payout": 2700.0,
         "mktg_spend": 0,
         "salary": 0,
-        "all_in_cost": 2600,
+        "all_in_cost": 2700,
         "mktg_cpa": 0,
         "all_in_cpa": 100,
+        "proj_rdr_apps": 19,
+        "proj_rdr_cpa": 142
+      },
+      {
+        "name": "James Proctor",
+        "effectuated": 26,
+        "total_ma": 31,
+        "eff_rate": 0.8387096774193549,
+        "tier": "80-84%",
+        "per_policy": 85.0,
+        "payout": 2210.0,
+        "mktg_spend": 0,
+        "salary": 0,
+        "all_in_cost": 2210,
+        "mktg_cpa": 0,
+        "all_in_cpa": 85,
         "proj_rdr_apps": 18,
-        "proj_rdr_cpa": 144
+        "proj_rdr_cpa": 123
       },
       {
         "name": "Colton Stanley",
         "effectuated": 24,
-        "total_ma": 27,
-        "eff_rate": 0.8888888888888888,
+        "total_ma": 28,
+        "eff_rate": 0.8571428571428571,
         "tier": "85%+",
         "per_policy": 100.0,
         "payout": 2400.0,
@@ -2872,8 +2872,8 @@
       {
         "name": "Vanessa Capote",
         "effectuated": 23,
-        "total_ma": 25,
-        "eff_rate": 0.92,
+        "total_ma": 26,
+        "eff_rate": 0.8846153846153846,
         "tier": "85%+",
         "per_policy": 100.0,
         "payout": 2300.0,
@@ -2968,18 +2968,18 @@
       {
         "name": "Logan Kelly",
         "effectuated": 20,
-        "total_ma": 26,
-        "eff_rate": 0.7692307692307693,
-        "tier": "75-79%",
-        "per_policy": 70.0,
-        "payout": 1400.0,
+        "total_ma": 27,
+        "eff_rate": 0.7407407407407407,
+        "tier": "70-74%",
+        "per_policy": 55.0,
+        "payout": 1100.0,
         "mktg_spend": 0,
         "salary": 0,
-        "all_in_cost": 1400,
+        "all_in_cost": 1100,
         "mktg_cpa": 0,
-        "all_in_cpa": 70,
+        "all_in_cpa": 55,
         "proj_rdr_apps": 14,
-        "proj_rdr_cpa": 100
+        "proj_rdr_cpa": 79
       },
       {
         "name": "Meeah Ventura",
@@ -3015,19 +3015,19 @@
       },
       {
         "name": "Latoya Boyd",
-        "effectuated": 18,
-        "total_ma": 21,
-        "eff_rate": 0.8571428571428571,
+        "effectuated": 19,
+        "total_ma": 22,
+        "eff_rate": 0.8636363636363636,
         "tier": "85%+",
         "per_policy": 100.0,
-        "payout": 1800.0,
+        "payout": 1900.0,
         "mktg_spend": 0,
         "salary": 0,
-        "all_in_cost": 1800,
+        "all_in_cost": 1900,
         "mktg_cpa": 0,
         "all_in_cpa": 100,
         "proj_rdr_apps": 13,
-        "proj_rdr_cpa": 138
+        "proj_rdr_cpa": 146
       },
       {
         "name": "Victor Rojas",
@@ -3078,6 +3078,38 @@
         "proj_rdr_cpa": 142
       },
       {
+        "name": "Kerith Hollingsworth",
+        "effectuated": 17,
+        "total_ma": 18,
+        "eff_rate": 0.9444444444444444,
+        "tier": "85%+",
+        "per_policy": 100.0,
+        "payout": 1700.0,
+        "mktg_spend": 0,
+        "salary": 0,
+        "all_in_cost": 1700,
+        "mktg_cpa": 0,
+        "all_in_cpa": 100,
+        "proj_rdr_apps": 12,
+        "proj_rdr_cpa": 142
+      },
+      {
+        "name": "Kevin Gallego",
+        "effectuated": 17,
+        "total_ma": 21,
+        "eff_rate": 0.8095238095238095,
+        "tier": "80-84%",
+        "per_policy": 85.0,
+        "payout": 1445.0,
+        "mktg_spend": 0,
+        "salary": 0,
+        "all_in_cost": 1445,
+        "mktg_cpa": 0,
+        "all_in_cpa": 85,
+        "proj_rdr_apps": 12,
+        "proj_rdr_cpa": 120
+      },
+      {
         "name": "Christine Saint Fleur",
         "effectuated": 16,
         "total_ma": 17,
@@ -3108,38 +3140,6 @@
         "all_in_cpa": 85,
         "proj_rdr_apps": 11,
         "proj_rdr_cpa": 124
-      },
-      {
-        "name": "Kerith Hollingsworth",
-        "effectuated": 16,
-        "total_ma": 18,
-        "eff_rate": 0.8888888888888888,
-        "tier": "85%+",
-        "per_policy": 100.0,
-        "payout": 1600.0,
-        "mktg_spend": 0,
-        "salary": 0,
-        "all_in_cost": 1600,
-        "mktg_cpa": 0,
-        "all_in_cpa": 100,
-        "proj_rdr_apps": 11,
-        "proj_rdr_cpa": 145
-      },
-      {
-        "name": "Kevin Gallego",
-        "effectuated": 16,
-        "total_ma": 21,
-        "eff_rate": 0.7619047619047619,
-        "tier": "75-79%",
-        "per_policy": 70.0,
-        "payout": 1120.0,
-        "mktg_spend": 0,
-        "salary": 0,
-        "all_in_cost": 1120,
-        "mktg_cpa": 0,
-        "all_in_cpa": 70,
-        "proj_rdr_apps": 11,
-        "proj_rdr_cpa": 102
       },
       {
         "name": "Michele Rubenstein",
@@ -3188,22 +3188,6 @@
         "all_in_cpa": 100,
         "proj_rdr_apps": 10,
         "proj_rdr_cpa": 150
-      },
-      {
-        "name": "Josiah Fernandez",
-        "effectuated": 13,
-        "total_ma": 16,
-        "eff_rate": 0.8125,
-        "tier": "80-84%",
-        "per_policy": 85.0,
-        "payout": 1105.0,
-        "mktg_spend": 0,
-        "salary": 0,
-        "all_in_cost": 1105,
-        "mktg_cpa": 0,
-        "all_in_cpa": 85,
-        "proj_rdr_apps": 9,
-        "proj_rdr_cpa": 123
       },
       {
         "name": "Roodolph Antoine",
@@ -3268,6 +3252,22 @@
         "all_in_cpa": 55,
         "proj_rdr_apps": 8,
         "proj_rdr_cpa": 76
+      },
+      {
+        "name": "Josiah Fernandez",
+        "effectuated": 11,
+        "total_ma": 16,
+        "eff_rate": 0.6875,
+        "tier": "≤69%",
+        "per_policy": 40.0,
+        "payout": 440.0,
+        "mktg_spend": 0,
+        "salary": 0,
+        "all_in_cost": 440,
+        "mktg_cpa": 0,
+        "all_in_cpa": 40,
+        "proj_rdr_apps": 8,
+        "proj_rdr_cpa": 55
       },
       {
         "name": "Destiny Ventura",
@@ -3431,19 +3431,19 @@
       },
       {
         "name": "Jorge Caceres",
-        "effectuated": 7,
+        "effectuated": 6,
         "total_ma": 10,
-        "eff_rate": 0.7,
-        "tier": "70-74%",
-        "per_policy": 55.0,
-        "payout": 385.0,
+        "eff_rate": 0.6,
+        "tier": "≤69%",
+        "per_policy": 40.0,
+        "payout": 240.0,
         "mktg_spend": 0,
         "salary": 0,
-        "all_in_cost": 385,
+        "all_in_cost": 240,
         "mktg_cpa": 0,
-        "all_in_cpa": 55,
-        "proj_rdr_apps": 5,
-        "proj_rdr_cpa": 77
+        "all_in_cpa": 40,
+        "proj_rdr_apps": 4,
+        "proj_rdr_cpa": 60
       },
       {
         "name": "Jordan McTier",
@@ -4047,7 +4047,7 @@
       "may": "May",
       "jun": "June"
     },
-    "generated_at": "2026-06-11T17:29:55Z",
-    "elapsed_ms": 3471.3
+    "generated_at": "2026-06-11T17:54:09Z",
+    "elapsed_ms": 3680.1
   }
 }

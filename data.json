@@ -2712,18 +2712,18 @@
       {
         "name": "Anthony Escobar",
         "effectuated": 37,
-        "total_ma": 43,
-        "eff_rate": 0.8604651162790697,
-        "tier": "85%+",
-        "per_policy": 100.0,
-        "payout": 3700.0,
+        "total_ma": 44,
+        "eff_rate": 0.8409090909090909,
+        "tier": "80-84%",
+        "per_policy": 85.0,
+        "payout": 3145.0,
         "mktg_spend": 0,
         "salary": 0,
-        "all_in_cost": 3700,
+        "all_in_cost": 3145,
         "mktg_cpa": 0,
-        "all_in_cpa": 100,
+        "all_in_cpa": 85,
         "proj_rdr_apps": 26,
-        "proj_rdr_cpa": 142
+        "proj_rdr_cpa": 121
       },
       {
         "name": "Chris Rosen",
@@ -3352,18 +3352,18 @@
       {
         "name": "Tealesia Marshall",
         "effectuated": 9,
-        "total_ma": 10,
-        "eff_rate": 0.9,
-        "tier": "85%+",
-        "per_policy": 100.0,
-        "payout": 900.0,
+        "total_ma": 11,
+        "eff_rate": 0.8181818181818182,
+        "tier": "80-84%",
+        "per_policy": 85.0,
+        "payout": 765.0,
         "mktg_spend": 0,
         "salary": 0,
-        "all_in_cost": 900,
+        "all_in_cost": 765,
         "mktg_cpa": 0,
-        "all_in_cpa": 100,
+        "all_in_cpa": 85,
         "proj_rdr_apps": 6,
-        "proj_rdr_cpa": 150
+        "proj_rdr_cpa": 128
       },
       {
         "name": "Alyx Magloire",
@@ -3512,8 +3512,8 @@
       {
         "name": "Nicole Baraibar",
         "effectuated": 3,
-        "total_ma": 10,
-        "eff_rate": 0.3,
+        "total_ma": 11,
+        "eff_rate": 0.2727272727272727,
         "tier": "≤69%",
         "per_policy": 40.0,
         "payout": 120.0,
@@ -4047,7 +4047,7 @@
       "may": "May",
       "jun": "June"
     },
-    "generated_at": "2026-06-11T22:15:09Z",
-    "elapsed_ms": 9051.6
+    "generated_at": "2026-06-12T12:08:46Z",
+    "elapsed_ms": 3556.2
   }
 }

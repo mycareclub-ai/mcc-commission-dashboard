@@ -2776,18 +2776,18 @@
       {
         "name": "Byron Morgan",
         "effectuated": 32,
-        "total_ma": 40,
-        "eff_rate": 0.8,
-        "tier": "80-84%",
-        "per_policy": 85.0,
-        "payout": 2720.0,
+        "total_ma": 41,
+        "eff_rate": 0.7804878048780488,
+        "tier": "75-79%",
+        "per_policy": 70.0,
+        "payout": 2240.0,
         "mktg_spend": 0,
         "salary": 0,
-        "all_in_cost": 2720,
+        "all_in_cost": 2240,
         "mktg_cpa": 0,
-        "all_in_cpa": 85,
+        "all_in_cpa": 70,
         "proj_rdr_apps": 22,
-        "proj_rdr_cpa": 124
+        "proj_rdr_cpa": 102
       },
       {
         "name": "Colton Stanley",
@@ -2935,19 +2935,19 @@
       },
       {
         "name": "Logan Kelly",
-        "effectuated": 26,
+        "effectuated": 25,
         "total_ma": 29,
-        "eff_rate": 0.896551724137931,
+        "eff_rate": 0.8620689655172413,
         "tier": "85%+",
         "per_policy": 100.0,
-        "payout": 2600.0,
+        "payout": 2500.0,
         "mktg_spend": 0,
         "salary": 0,
-        "all_in_cost": 2600,
+        "all_in_cost": 2500,
         "mktg_cpa": 0,
         "all_in_cpa": 100,
         "proj_rdr_apps": 18,
-        "proj_rdr_cpa": 144
+        "proj_rdr_cpa": 139
       },
       {
         "name": "Meeah Ventura",
@@ -3000,18 +3000,18 @@
       {
         "name": "Siannie Abdala",
         "effectuated": 24,
-        "total_ma": 30,
-        "eff_rate": 0.8,
-        "tier": "80-84%",
-        "per_policy": 85.0,
-        "payout": 2040.0,
+        "total_ma": 31,
+        "eff_rate": 0.7741935483870968,
+        "tier": "75-79%",
+        "per_policy": 70.0,
+        "payout": 1680.0,
         "mktg_spend": 0,
         "salary": 0,
-        "all_in_cost": 2040,
+        "all_in_cost": 1680,
         "mktg_cpa": 0,
-        "all_in_cpa": 85,
+        "all_in_cpa": 70,
         "proj_rdr_apps": 17,
-        "proj_rdr_cpa": 120
+        "proj_rdr_cpa": 99
       },
       {
         "name": "Kerith Hollingsworth",
@@ -3224,18 +3224,18 @@
       {
         "name": "Josiah Fernandez",
         "effectuated": 15,
-        "total_ma": 20,
-        "eff_rate": 0.75,
-        "tier": "75-79%",
-        "per_policy": 70.0,
-        "payout": 1050.0,
+        "total_ma": 21,
+        "eff_rate": 0.7142857142857143,
+        "tier": "70-74%",
+        "per_policy": 55.0,
+        "payout": 825.0,
         "mktg_spend": 0,
         "salary": 0,
-        "all_in_cost": 1050,
+        "all_in_cost": 825,
         "mktg_cpa": 0,
-        "all_in_cpa": 70,
+        "all_in_cpa": 55,
         "proj_rdr_apps": 10,
-        "proj_rdr_cpa": 105
+        "proj_rdr_cpa": 82
       },
       {
         "name": "Paul Valle, Jr",
@@ -4047,7 +4047,7 @@
       "may": "May",
       "jun": "June"
     },
-    "generated_at": "2026-06-15T21:17:33Z",
-    "elapsed_ms": 3994.5
+    "generated_at": "2026-06-15T21:34:45Z",
+    "elapsed_ms": 3801.9
   }
 }

@@ -2712,8 +2712,8 @@
       {
         "name": "Anthony Escobar",
         "effectuated": 42,
-        "total_ma": 45,
-        "eff_rate": 0.9333333333333333,
+        "total_ma": 46,
+        "eff_rate": 0.9130434782608695,
         "tier": "85%+",
         "per_policy": 100.0,
         "payout": 4200.0,
@@ -2728,8 +2728,8 @@
       {
         "name": "Chris Rosen",
         "effectuated": 36,
-        "total_ma": 40,
-        "eff_rate": 0.9,
+        "total_ma": 41,
+        "eff_rate": 0.8780487804878049,
         "tier": "85%+",
         "per_policy": 100.0,
         "payout": 3600.0,
@@ -4047,7 +4047,7 @@
       "may": "May",
       "jun": "June"
     },
-    "generated_at": "2026-06-15T21:56:51Z",
-    "elapsed_ms": 3766.0
+    "generated_at": "2026-06-15T22:04:45Z",
+    "elapsed_ms": 3659.7
   }
 }

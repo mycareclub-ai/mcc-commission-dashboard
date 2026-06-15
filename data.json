@@ -2920,8 +2920,8 @@
       {
         "name": "Torrie Holmes",
         "effectuated": 27,
-        "total_ma": 35,
-        "eff_rate": 0.7714285714285715,
+        "total_ma": 36,
+        "eff_rate": 0.75,
         "tier": "75-79%",
         "per_policy": 70.0,
         "payout": 1890.0,
@@ -3208,18 +3208,18 @@
       {
         "name": "Donovan Moore",
         "effectuated": 15,
-        "total_ma": 18,
-        "eff_rate": 0.8333333333333334,
-        "tier": "80-84%",
-        "per_policy": 85.0,
-        "payout": 1275.0,
+        "total_ma": 19,
+        "eff_rate": 0.7894736842105263,
+        "tier": "75-79%",
+        "per_policy": 70.0,
+        "payout": 1050.0,
         "mktg_spend": 0,
         "salary": 0,
-        "all_in_cost": 1275,
+        "all_in_cost": 1050,
         "mktg_cpa": 0,
-        "all_in_cpa": 85,
+        "all_in_cpa": 70,
         "proj_rdr_apps": 10,
-        "proj_rdr_cpa": 128
+        "proj_rdr_cpa": 105
       },
       {
         "name": "Josiah Fernandez",
@@ -4047,7 +4047,7 @@
       "may": "May",
       "jun": "June"
     },
-    "generated_at": "2026-06-15T22:04:45Z",
-    "elapsed_ms": 3659.7
+    "generated_at": "2026-06-15T22:15:07Z",
+    "elapsed_ms": 7104.6
   }
 }

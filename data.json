@@ -2822,22 +2822,6 @@
         "proj_rdr_cpa": 141
       },
       {
-        "name": "James Proctor",
-        "effectuated": 30,
-        "total_ma": 34,
-        "eff_rate": 0.8823529411764706,
-        "tier": "85%+",
-        "per_policy": 100.0,
-        "payout": 3000.0,
-        "mktg_spend": 0,
-        "salary": 0,
-        "all_in_cost": 3000,
-        "mktg_cpa": 0,
-        "all_in_cpa": 100,
-        "proj_rdr_apps": 21,
-        "proj_rdr_cpa": 143
-      },
-      {
         "name": "Reginal Jeudy",
         "effectuated": 30,
         "total_ma": 33,
@@ -2868,6 +2852,22 @@
         "all_in_cpa": 100,
         "proj_rdr_apps": 21,
         "proj_rdr_cpa": 143
+      },
+      {
+        "name": "James Proctor",
+        "effectuated": 29,
+        "total_ma": 34,
+        "eff_rate": 0.8529411764705882,
+        "tier": "85%+",
+        "per_policy": 100.0,
+        "payout": 2900.0,
+        "mktg_spend": 0,
+        "salary": 0,
+        "all_in_cost": 2900,
+        "mktg_cpa": 0,
+        "all_in_cpa": 100,
+        "proj_rdr_apps": 20,
+        "proj_rdr_cpa": 145
       },
       {
         "name": "Juna Defay Lamour",
@@ -3160,8 +3160,8 @@
       {
         "name": "Dorian Moore",
         "effectuated": 17,
-        "total_ma": 23,
-        "eff_rate": 0.7391304347826086,
+        "total_ma": 24,
+        "eff_rate": 0.7083333333333334,
         "tier": "70-74%",
         "per_policy": 55.0,
         "payout": 935.0,
@@ -4047,7 +4047,7 @@
       "may": "May",
       "jun": "June"
     },
-    "generated_at": "2026-06-15T21:34:45Z",
-    "elapsed_ms": 3801.9
+    "generated_at": "2026-06-15T21:56:51Z",
+    "elapsed_ms": 3766.0
   }
 }

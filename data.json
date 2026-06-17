@@ -2728,8 +2728,8 @@
       {
         "name": "Chris Rosen",
         "effectuated": 43,
-        "total_ma": 47,
-        "eff_rate": 0.9148936170212766,
+        "total_ma": 48,
+        "eff_rate": 0.8958333333333334,
         "tier": "85%+",
         "per_policy": 100.0,
         "payout": 4300.0,
@@ -3224,8 +3224,8 @@
       {
         "name": "Josiah Fernandez",
         "effectuated": 18,
-        "total_ma": 23,
-        "eff_rate": 0.782608695652174,
+        "total_ma": 24,
+        "eff_rate": 0.75,
         "tier": "75-79%",
         "per_policy": 70.0,
         "payout": 1260.0,
@@ -4047,7 +4047,7 @@
       "may": "May",
       "jun": "June"
     },
-    "generated_at": "2026-06-17T16:00:02Z",
-    "elapsed_ms": 3389.0
+    "generated_at": "2026-06-17T16:15:05Z",
+    "elapsed_ms": 5757.2
   }
 }

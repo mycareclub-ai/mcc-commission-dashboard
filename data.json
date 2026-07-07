@@ -148,18 +148,18 @@
       {
         "name": "Paul Valle, Jr",
         "effectuated": 4,
-        "total_ma": 4,
-        "eff_rate": 1.0,
-        "tier": "85%+",
-        "per_policy": 100.0,
-        "payout": 400.0,
+        "total_ma": 5,
+        "eff_rate": 0.8,
+        "tier": "80-84%",
+        "per_policy": 85.0,
+        "payout": 340.0,
         "mktg_spend": 0,
         "salary": 0,
-        "all_in_cost": 400,
+        "all_in_cost": 340,
         "mktg_cpa": 0,
-        "all_in_cpa": 100,
+        "all_in_cpa": 85,
         "proj_rdr_apps": 3,
-        "proj_rdr_cpa": 133
+        "proj_rdr_cpa": 113
       },
       {
         "name": "Shaun Biddix",
@@ -276,8 +276,8 @@
       {
         "name": "Juna Defay Lamour",
         "effectuated": 3,
-        "total_ma": 5,
-        "eff_rate": 0.6,
+        "total_ma": 6,
+        "eff_rate": 0.5,
         "tier": "≤69%",
         "per_policy": 40.0,
         "payout": 120.0,
@@ -404,8 +404,8 @@
       {
         "name": "Kerith Hollingsworth",
         "effectuated": 2,
-        "total_ma": 3,
-        "eff_rate": 0.6666666666666666,
+        "total_ma": 4,
+        "eff_rate": 0.5,
         "tier": "≤69%",
         "per_policy": 40.0,
         "payout": 80.0,
@@ -729,7 +729,7 @@
     "months": {
       "jul": "July"
     },
-    "generated_at": "2026-07-07T18:00:36Z",
-    "elapsed_ms": 2457.7
+    "generated_at": "2026-07-07T19:15:02Z",
+    "elapsed_ms": 2284.2
   }
 }

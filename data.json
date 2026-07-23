@@ -274,6 +274,22 @@
         "proj_rdr_cpa": 125
       },
       {
+        "name": "Colton Stanley",
+        "effectuated": 22,
+        "total_ma": 24,
+        "eff_rate": 0.9166666666666666,
+        "tier": "85%+",
+        "per_policy": 100.0,
+        "payout": 2200.0,
+        "mktg_spend": 0,
+        "salary": 0,
+        "all_in_cost": 2200,
+        "mktg_cpa": 0,
+        "all_in_cpa": 100,
+        "proj_rdr_apps": 15,
+        "proj_rdr_cpa": 147
+      },
+      {
         "name": "Vanessa Capote",
         "effectuated": 22,
         "total_ma": 25,
@@ -288,22 +304,6 @@
         "all_in_cpa": 100,
         "proj_rdr_apps": 15,
         "proj_rdr_cpa": 147
-      },
-      {
-        "name": "Colton Stanley",
-        "effectuated": 21,
-        "total_ma": 24,
-        "eff_rate": 0.875,
-        "tier": "85%+",
-        "per_policy": 100.0,
-        "payout": 2100.0,
-        "mktg_spend": 0,
-        "salary": 0,
-        "all_in_cost": 2100,
-        "mktg_cpa": 0,
-        "all_in_cpa": 100,
-        "proj_rdr_apps": 15,
-        "proj_rdr_cpa": 140
       },
       {
         "name": "James DeChene",
@@ -434,6 +434,22 @@
         "proj_rdr_cpa": 124
       },
       {
+        "name": "Alex Fernandez",
+        "effectuated": 17,
+        "total_ma": 21,
+        "eff_rate": 0.8095238095238095,
+        "tier": "80-84%",
+        "per_policy": 85.0,
+        "payout": 1445.0,
+        "mktg_spend": 0,
+        "salary": 0,
+        "all_in_cost": 1445,
+        "mktg_cpa": 0,
+        "all_in_cpa": 85,
+        "proj_rdr_apps": 12,
+        "proj_rdr_cpa": 120
+      },
+      {
         "name": "Kerith Hollingsworth",
         "effectuated": 17,
         "total_ma": 22,
@@ -498,22 +514,6 @@
         "proj_rdr_cpa": 142
       },
       {
-        "name": "Alex Fernandez",
-        "effectuated": 16,
-        "total_ma": 21,
-        "eff_rate": 0.7619047619047619,
-        "tier": "75-79%",
-        "per_policy": 70.0,
-        "payout": 1120.0,
-        "mktg_spend": 0,
-        "salary": 0,
-        "all_in_cost": 1120,
-        "mktg_cpa": 0,
-        "all_in_cpa": 70,
-        "proj_rdr_apps": 11,
-        "proj_rdr_cpa": 102
-      },
-      {
         "name": "Jimmy Nguyen",
         "effectuated": 16,
         "total_ma": 22,
@@ -546,22 +546,6 @@
         "proj_rdr_cpa": 105
       },
       {
-        "name": "Paul Valle, Jr",
-        "effectuated": 15,
-        "total_ma": 18,
-        "eff_rate": 0.8333333333333334,
-        "tier": "80-84%",
-        "per_policy": 85.0,
-        "payout": 1275.0,
-        "mktg_spend": 0,
-        "salary": 0,
-        "all_in_cost": 1275,
-        "mktg_cpa": 0,
-        "all_in_cpa": 85,
-        "proj_rdr_apps": 10,
-        "proj_rdr_cpa": 128
-      },
-      {
         "name": "Ryan Percy Lue",
         "effectuated": 15,
         "total_ma": 17,
@@ -592,6 +576,22 @@
         "all_in_cpa": 100,
         "proj_rdr_apps": 10,
         "proj_rdr_cpa": 140
+      },
+      {
+        "name": "Paul Valle, Jr",
+        "effectuated": 14,
+        "total_ma": 18,
+        "eff_rate": 0.7777777777777778,
+        "tier": "75-79%",
+        "per_policy": 70.0,
+        "payout": 980.0,
+        "mktg_spend": 0,
+        "salary": 0,
+        "all_in_cost": 980,
+        "mktg_cpa": 0,
+        "all_in_cpa": 70,
+        "proj_rdr_apps": 10,
+        "proj_rdr_cpa": 98
       },
       {
         "name": "Ryan Schmiedeknecht",
@@ -953,7 +953,7 @@
     "months": {
       "jul": "July"
     },
-    "generated_at": "2026-07-23T13:16:27Z",
-    "elapsed_ms": 2542.4
+    "generated_at": "2026-07-23T13:16:40Z",
+    "elapsed_ms": 2627.5
   }
 }

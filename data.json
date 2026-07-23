@@ -178,6 +178,22 @@
         "proj_rdr_cpa": 140
       },
       {
+        "name": "Juan Melguizo",
+        "effectuated": 26,
+        "total_ma": 29,
+        "eff_rate": 0.896551724137931,
+        "tier": "85%+",
+        "per_policy": 100.0,
+        "payout": 2600.0,
+        "mktg_spend": 0,
+        "salary": 0,
+        "all_in_cost": 2600,
+        "mktg_cpa": 0,
+        "all_in_cpa": 100,
+        "proj_rdr_apps": 18,
+        "proj_rdr_cpa": 144
+      },
+      {
         "name": "Bryan Guanche",
         "effectuated": 25,
         "total_ma": 26,
@@ -208,22 +224,6 @@
         "all_in_cpa": 70,
         "proj_rdr_apps": 18,
         "proj_rdr_cpa": 97
-      },
-      {
-        "name": "Juan Melguizo",
-        "effectuated": 25,
-        "total_ma": 29,
-        "eff_rate": 0.8620689655172413,
-        "tier": "85%+",
-        "per_policy": 100.0,
-        "payout": 2500.0,
-        "mktg_spend": 0,
-        "salary": 0,
-        "all_in_cost": 2500,
-        "mktg_cpa": 0,
-        "all_in_cpa": 100,
-        "proj_rdr_apps": 18,
-        "proj_rdr_cpa": 139
       },
       {
         "name": "Alyx Magloire",
@@ -690,23 +690,23 @@
         "proj_rdr_cpa": 128
       },
       {
-        "name": "Berkley Prospere",
-        "effectuated": 11,
+        "name": "Marco Michelena",
+        "effectuated": 12,
         "total_ma": 12,
-        "eff_rate": 0.9166666666666666,
+        "eff_rate": 1.0,
         "tier": "85%+",
         "per_policy": 100.0,
-        "payout": 1100.0,
+        "payout": 1200.0,
         "mktg_spend": 0,
         "salary": 0,
-        "all_in_cost": 1100,
+        "all_in_cost": 1200,
         "mktg_cpa": 0,
         "all_in_cpa": 100,
         "proj_rdr_apps": 8,
-        "proj_rdr_cpa": 138
+        "proj_rdr_cpa": 150
       },
       {
-        "name": "Marco Michelena",
+        "name": "Berkley Prospere",
         "effectuated": 11,
         "total_ma": 12,
         "eff_rate": 0.9166666666666666,
@@ -953,7 +953,7 @@
     "months": {
       "jul": "July"
     },
-    "generated_at": "2026-07-23T13:16:08Z",
-    "elapsed_ms": 2665.4
+    "generated_at": "2026-07-23T13:16:20Z",
+    "elapsed_ms": 2563.4
   }
 }
